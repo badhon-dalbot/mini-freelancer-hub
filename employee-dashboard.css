@@ -86,6 +86,7 @@ body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    
 }
 
 .sidebar_nav {
@@ -170,8 +171,6 @@ body {
     color: #586174;
     padding: 11px 13px;
     font-size: 14px;
-    display: inline-flex;
-    align-items: center;
 }
 
 .sidebar_logout:hover {

@@ -551,6 +551,7 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+    text-decoration: none;
 }
 
 .services_button:hover {
@@ -987,6 +988,7 @@ body {
 }
 
 @media (max-width: 620px) {
+
   .browse_card,
   .clients_card {
     min-width: 100%;
@@ -1238,6 +1240,7 @@ body {
 }
 
 @media (max-width: 620px) {
+
   .cta_title,
   .faq_title,
   .newsletter_title {
