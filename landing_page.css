@@ -108,6 +108,7 @@
     cursor: pointer;
     transition: color 0.3s ease;
     padding: 0.5rem 0;
+    text-decoration: none;
 }
 
 .sign-in:hover {
@@ -124,6 +125,10 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .register:hover {
@@ -192,6 +197,7 @@ body {
     padding: 0.8rem 1rem;
     font-size: 0.95rem;
     background: transparent;
+    outline: none;
 }
 
 .search_type {
