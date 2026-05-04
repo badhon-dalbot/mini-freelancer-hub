@@ -1,58 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explore</title>
-    <link rel="stylesheet" href="../styles/utilities.css" />
-    <link rel="stylesheet" href="../styles/explore-projects.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo_image"><img src="/Assests/logo.png" alt="" /></div>
-      <div class="logo">Mini Freelancer Hub</div>
-      <nav class="nav_left">
-        <a href="#Explorer" class="dropdown-link"
-          >Explore <span class="dropdown-arrow">▼</span></a
-        >
-        <a href="categories.html" class="dropdown-link"
-          >Find By Category <span class="dropdown-arrow">▼</span></a
-        >
-      </nav>
 
-      <div class="nav_right">
-        <input type="text" placeholder="Search" />
-        <select class="freelancers-dropdown">
-          <option>Freelancers</option>
-          <option>All Freelancers</option>
-          <option>Top Rated</option>
-          <option>New</option>
-        </select>
-        <a href="signin.html" class="sign-in">Sign in</a>
-        <a href="register.html" class="register">Register</a>
-      </div>
-    </header>
-    <div class="container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <h2>Logo</h2>
-        <ul>
-          <li>🏠</li>
-          <li>📄</li>
-          <li class="active">📁</li>
-          <li>📅</li>
-          <li>⚙️</li>
-        </ul>
-      </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore</title>
+  <link rel="icon" href="../Assests/logo.png" type="image/png" />
+  <link rel="stylesheet" href="../styles/utilities.css" />
+  <link rel="stylesheet" href="../styles/explore-projects.css" />
+</head>
 
-      <!-- Main Content -->
-      <main class="main">
-        <!-- Search Bar -->
-        <!-- <div class="search-bar">
+<body>
+  <header id="header" class="header">
+    <div class="logo_image"><img src="/Assests/logo.png" alt="" /></div>
+    <div class="logo">Mini Freelancer Hub</div>
+    <nav class="nav_left">
+      <a href="#Explorer" class="dropdown-link">Explore <span class="dropdown-arrow">▼</span></a>
+      <a href="categories.html" class="dropdown-link">Find By Category <span class="dropdown-arrow">▼</span></a>
+    </nav>
+
+    <div class="nav_right">
+      <input type="text" placeholder="Search" />
+      <select class="freelancers-dropdown">
+        <option>Freelancers</option>
+        <option>All Freelancers</option>
+        <option>Top Rated</option>
+        <option>New</option>
+      </select>
+      <a href="signin.html" class="sign-in">Sign in</a>
+      <a href="register.html" class="register">Register</a>
+    </div>
+  </header>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <h2>Logo</h2>
+      <ul>
+        <li>🏠</li>
+        <li>📄</li>
+        <li class="active">📁</li>
+        <li>📅</li>
+        <li>⚙️</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Search Bar -->
+      <!-- <div class="search-bar">
           <input type="text" id="searchInput" placeholder="Start your search" />
           <button onclick="searchJobs()">Search</button>
         </div> -->
-       <div class="nav_right">
+      <div id="search-bar" class="nav_right">
         <input type="text" placeholder="Search" />
         <select class="freelancers-dropdown">
           <option>Freelancers</option>
@@ -61,14 +60,14 @@
           <option>New</option>
         </select>
       </div>
-    </div>
-        <h3 id="resultCount">0 search results found</h3>
+      <h3 class="result-count"><span id="resultCount">0</span> search results found</h3>
 
-        <!-- Job Cards -->
-        <div id="jobContainer" class="job-grid"></div>
-      </main>
-    </div>
+      <!-- Job Cards -->
+      <div id="jobContainer" class="job-grid"></div>
+  </div>
+  </main>
 
-    <script src="../scripts/explore-projects.js"></script>
-  </body>
+  <script src="../scripts/explore-projects.js"></script>
+</body>
+
 </html>
