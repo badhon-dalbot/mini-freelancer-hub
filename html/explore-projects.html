@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore</title>
+    <link rel="stylesheet" href="../styles/explore-projects.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h2>Logo</h2>
+        <ul>
+          <li>🏠</li>
+          <li>📄</li>
+          <li class="active">📁</li>
+          <li>📅</li>
+          <li>⚙️</li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main">
+        <!-- Search Bar -->
+        <!-- <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Start your search" />
+          <button onclick="searchJobs()">Search</button>
+        </div> -->
+       <div class="nav_right">
+        <input type="text" placeholder="Search" />
+        <select class="freelancers-dropdown">
+          <option>Freelancers</option>
+          <option>All Freelancers</option>
+          <option>Top Rated</option>
+          <option>New</option>
+        </select>
+      </div>
+    </div>
+        <h3 id="resultCount">0 search results found</h3>
+
+        <!-- Job Cards -->
+        <div id="jobContainer" class="job-grid"></div>
+      </main>
+    </div>
+
+    <script src="../scripts/explore-projects.js"></script>
+  </body>
+</html>
