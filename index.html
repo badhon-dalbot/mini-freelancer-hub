@@ -1,11 +1,704 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Freelancer Hub</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="logo_image"><img src="/Assests/logo.png" alt="" /></div>
+      <div class="logo">Mini Freelancer Hub</div>
+      <nav class="nav_left">
+        <a href="#Explorer" class="dropdown-link"
+          >Explore <span class="dropdown-arrow">▼</span></a
+        >
+        <a href="categories.html" class="dropdown-link"
+          >Find By Category <span class="dropdown-arrow">▼</span></a
+        >
+      </nav>
+
+      <div class="nav_right">
+        <input type="text" placeholder="Search" />
+        <select class="freelancers-dropdown">
+          <option>Freelancers</option>
+          <option>All Freelancers</option>
+          <option>Top Rated</option>
+          <option>New</option>
+        </select>
+        <a href="signin.html" class="sign-in">Sign in</a>
+        <a href="register.html" class="register">Register</a>
+      </div>
+    </div>
+
+    <div class="mainbody">
+      <div class="find_Freelancer_part">
+        <h1>
+          Find the Best <span>Freelance Services</span><br />
+          for Your Business
+        </h1>
+        <p>
+          Connect with top-tier talent, vetted and ready to deliver excellence.
+        </p>
+      </div>
+
+      <div class="search_bar">
+        <input type="text" placeholder="Search by keyword..." />
+        <select class="search_type">
+          <option>Freelancers</option>
+          <option>Projects</option>
+          <option>Services</option>
+        </select>
+        <button class="search_button">Search</button>
+      </div>
+
+      <div class="popular_tags">
+        <span class="popular_label">Popular:</span>
+        <a href="#">Logo Design</a>
+        <a href="#">WordPress</a>
+        <a href="#">Video Editing</a>
+        <a href="#">SEO</a>
+        <a href="#">React Developer</a>
+      </div>
+
+      <div class="trusted_by">
+        <span>Trusted by</span>
+        <span>airbnb</span>
+        <span>Microsoft</span>
+        <span>INTERCOM</span>
+        <span>Trello</span>
+      </div>
+
+      <div class="stats_row">
+        <div class="stat_card">
+          <div class="stat_icon">
+            <img src="Assests/freelancers.png" alt="Freelancers" />
+          </div>
+          <p class="stat_value">10K+</p>
+          <p class="stat_text">Freelancers</p>
+        </div>
+        <div class="stat_card">
+          <div class="stat_icon">
+            <img src="Assests/project done.png" alt="Projects Done" />
+          </div>
+          <p class="stat_value">50K+</p>
+          <p class="stat_text">Projects Done</p>
+        </div>
+        <div class="stat_card">
+          <div class="stat_icon">
+            <img src="Assests/avg rating.png" alt="Avg Rating" />
+          </div>
+          <p class="stat_value">4.9</p>
+          <p class="stat_text">Avg Rating</p>
+        </div>
+        <div class="stat_card">
+          <div class="stat_icon">
+            <img src="Assests/countries.png" alt="Countries" />
+          </div>
+          <p class="stat_value">120+</p>
+          <p class="stat_text">Countries</p>
+        </div>
+      </div>
+
+      <section class="how_it_works">
+        <div class="how_container">
+          <h2 class="how_title">How It Works</h2>
+          <p class="how_sub">Simple steps to get your project done</p>
+
+          <div class="how_cards">
+            <div class="how_card">
+              <div class="how_icon">
+                <img src="Assests/post_job_search.png" alt="Post a Job" />
+              </div>
+              <h3 class="how_card_title">Post a Job</h3>
+              <p class="how_card_text">
+                Describe your project needs and requirements clearly to attract
+                the right talent.
+              </p>
+            </div>
+
+            <div class="how_card">
+              <div class="how_icon">
+                <img src="Assests/browse_talent_icon.png" alt="Browse Talent" />
+              </div>
+              <h3 class="how_card_title">Browse Talent</h3>
+              <p class="how_card_text">
+                Review profiles, portfolios, and proposals from top vetted
+                freelancers.
+              </p>
+            </div>
+
+            <div class="how_card">
+              <div class="how_icon">
+                <img src="Assests/hire and pay icon.png" alt="Hire & Pay" />
+              </div>
+              <h3 class="how_card_title">Hire &amp; Pay Safely</h3>
+              <p class="how_card_text">
+                Secure milestone-based payments with full buyer protection
+                guaranteed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="Services_availabe_section">
+        <div class="services_container">
+          <div class="services_head">
+            <h2 class="services_title">
+              10,256 Services available in <span>Marketing</span>
+            </h2>
+            <p class="services_subtitle">
+              Within the top 1%, discover elite talent meticulously vetted to
+              uphold the highest standards.
+            </p>
+          </div>
+
+          <div class="services_tags">
+            <a href="#" class="services_tag active">All</a>
+            <a href="#" class="services_tag">Writing &amp; Translation</a>
+            <a href="#" class="services_tag">Smart AI Services</a>
+            <a href="#" class="services_tag">Graphics &amp; Design</a>
+            <a href="#" class="services_tag">Development</a>
+            <a href="#" class="services_tag">Digital Marketing</a>
+          </div>
+
+          <div class="services_cards">
+            <div class="services_card">
+              <div class="services_card_top">
+                <span class="services_fav">♡</span>
+                <span class="services_icon"
+                  ><img src="Assests/Compelling_icons.png" alt="Writing"
+                /></span>
+              </div>
+              <div class="services_card_body">
+                <div class="services_owner_row">
+                  <div class="services_avatar green">JH</div>
+                  <p class="services_owner">Jack Henry <span>✓</span></p>
+                </div>
+                <h3 class="services_card_title">
+                  Compelling and Relevant Blog Content Writing
+                </h3>
+                <div class="services_rating">
+                  ★★★★☆ <span>0/5.0 User review</span>
+                </div>
+                <p class="services_country">📍 United States (US)</p>
+              </div>
+              <div class="services_card_bottom">
+                <span>Starting from</span>
+                <strong>$80</strong>
+              </div>
+            </div>
+
+            <div class="services_card">
+              <div class="services_card_top">
+                <span class="services_fav">♡</span>
+                <span class="services_icon"
+                  ><img src="Assests/AI video creation icon.png" alt="Video"
+                /></span>
+              </div>
+              <div class="services_card_body">
+                <div class="services_owner_row">
+                  <div class="services_avatar green">AM</div>
+                  <p class="services_owner">Anna Muller <span>✓</span></p>
+                </div>
+                <h3 class="services_card_title">
+                  AI Video Creation and Post-Production Services
+                </h3>
+                <div class="services_rating">
+                  ★★★★☆ <span>0/5.0 User review</span>
+                </div>
+                <p class="services_country">📍 Brazil</p>
+              </div>
+              <div class="services_card_bottom">
+                <span>Starting from</span>
+                <strong>$300</strong>
+              </div>
+            </div>
+
+            <div class="services_card">
+              <div class="services_card_top">
+                <span class="services_fav">♡</span>
+                <span class="services_icon"
+                  ><img src="Assests/AI solution Icon" alt="AI Solution"
+                /></span>
+              </div>
+              <div class="services_card_body">
+                <div class="services_owner_row">
+                  <div class="services_avatar green">YT</div>
+                  <p class="services_owner">Yuki Tanaka <span>✓</span></p>
+                </div>
+                <h3 class="services_card_title">
+                  AI Solution Development for Enterprise Businesses
+                </h3>
+                <div class="services_rating">
+                  ★★★★☆ <span>0/5.0 User review</span>
+                </div>
+                <p class="services_country">📍 Japan</p>
+              </div>
+              <div class="services_card_bottom">
+                <span>Starting from</span>
+                <strong>$1,200</strong>
+              </div>
+            </div>
+
+            <div class="services_card">
+              <div class="services_card_top">
+                <span class="services_fav">♡</span>
+                <span class="services_icon"
+                  ><img src="Assests/professional UI UX icon.png" alt="UI UX"
+                /></span>
+              </div>
+              <div class="services_card_body">
+                <div class="services_owner_row">
+                  <div class="services_avatar green">SM</div>
+                  <p class="services_owner">Sara Miller <span>✓</span></p>
+                </div>
+                <h3 class="services_card_title">
+                  Professional UI/UX Design and Brand Identity
+                </h3>
+                <div class="services_rating">
+                  ★★★★☆ <span>0/5.0 User review</span>
+                </div>
+                <p class="services_country">📍 Germany</p>
+              </div>
+              <div class="services_card_bottom">
+                <span>Starting from</span>
+                <strong>$1,000</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="services_action">
+            <button class="services_button">View All Services</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="Talent_available_section">
+        <div class="talent_container">
+          <div class="talent_head">
+            <h2 class="talent_title">
+              10,256 Talent available in <span>Independent</span>
+            </h2>
+            <p class="talent_subtitle">
+              Within the top 1%, discover elite talent meticulously vetted to
+              uphold the highest standards.
+            </p>
+          </div>
+
+          <div class="talent_cards">
+            <div class="talent_card">
+              <div class="talent_card_top">
+                <span class="talent_icon"
+                  ><img src="Assests/Sara Miller  Icon.png" alt="Sara"
+                /></span>
+                <span class="talent_views">👁 1,285 views</span>
+              </div>
+
+              <div class="talent_card_body">
+                <h3 class="talent_name">Sara Miller</h3>
+                <p class="talent_role">Professional AI Services Specialist</p>
+                <div class="talent_rating">★ <span>5.0 (15 review)</span></div>
+                <div class="talent_rate">
+                  💳 Hourly Rate <strong>$80/hr</strong>
+                </div>
+              </div>
+
+              <div class="talent_card_bottom">
+                <span class="talent_location">📍 Germany</span>
+              </div>
+            </div>
+
+            <div class="talent_card">
+              <div class="talent_card_top">
+                <span class="talent_icon"
+                  ><img src="Assests/John Doe Icon.png" alt="Jane"
+                /></span>
+                <span class="talent_views">👁 1,001 views</span>
+              </div>
+
+              <div class="talent_card_body">
+                <h3 class="talent_name">Jane Doe</h3>
+                <p class="talent_role">Experienced Web Developer</p>
+                <div class="talent_rating">★ <span>4.9 (12 review)</span></div>
+                <div class="talent_rate">
+                  💳 Hourly Rate <strong>$50/hr</strong>
+                </div>
+              </div>
+
+              <div class="talent_card_bottom">
+                <span class="talent_location">📍 United States</span>
+              </div>
+            </div>
+
+            <div class="talent_card">
+              <div class="talent_card_top">
+                <span class="talent_icon"
+                  ><img src="Assests/Alex Moore icon.png" alt="Alex"
+                /></span>
+                <span class="talent_views">👁 823 views</span>
+              </div>
+
+              <div class="talent_card_body">
+                <h3 class="talent_name">Alex Moore</h3>
+                <p class="talent_role">Professional WordPress Developer</p>
+                <div class="talent_rating">★ <span>4.8 (10 review)</span></div>
+                <div class="talent_rate">
+                  💳 Hourly Rate <strong>$70/hr</strong>
+                </div>
+              </div>
+
+              <div class="talent_card_bottom">
+                <span class="talent_location">📍 Germany</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="talent_action">
+            <button class="talent_button">View All Talent</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="Browse_by_Category_section">
+        <div class="browse_container">
+          <div class="browse_head">
+            <h2 class="browse_title">Browse by Category</h2>
+            <p class="browse_subtitle">
+              Explore thousands of services across all categories
+            </p>
+          </div>
+
+          <div class="browse_cards">
+            <div class="browse_card">
+              <div class="browse_icon">✎</div>
+              <h3 class="browse_card_title">Design</h3>
+              <p class="browse_card_text">1,240 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">&lt;/&gt;</div>
+              <h3 class="browse_card_title">Development</h3>
+              <p class="browse_card_text">2,180 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">📢</div>
+              <h3 class="browse_card_title">Marketing</h3>
+              <p class="browse_card_text">980 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">🖋</div>
+              <h3 class="browse_card_title">Writing</h3>
+              <p class="browse_card_text">1,560 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">▶</div>
+              <h3 class="browse_card_title">Video</h3>
+              <p class="browse_card_text">740 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">♫</div>
+              <h3 class="browse_card_title">Music</h3>
+              <p class="browse_card_text">420 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">$</div>
+              <h3 class="browse_card_title">Business</h3>
+              <p class="browse_card_text">890 Services</p>
+            </div>
+
+            <div class="browse_card">
+              <div class="browse_icon">✧</div>
+              <h3 class="browse_card_title">AI Services</h3>
+              <p class="browse_card_text">1,100 Services</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="clients_say_section">
+        <div class="clients_container">
+          <div class="clients_head">
+            <h2 class="clients_title">What Our Clients Say</h2>
+            <p class="clients_subtitle">
+              Trusted by thousands of businesses worldwide
+            </p>
+          </div>
+
+          <div class="clients_cards">
+            <div class="clients_card">
+              <p class="clients_quote">❝</p>
+              <p class="clients_text">
+                Workreap helped us find an incredible designer in just 24 hours.
+                The quality of talent on this platform is truly unmatched.
+                Highly recommended!
+              </p>
+              <div class="clients_user_row">
+                <div class="clients_avatar green">MK</div>
+                <div class="clients_user_info">
+                  <h3 class="clients_name">Michael Kim</h3>
+                  <p class="clients_role">CEO, TechStart Inc.</p>
+                  <div class="clients_stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clients_card">
+              <p class="clients_quote">❝</p>
+              <p class="clients_text">
+                The secure payment system gave us peace of mind. We hired 12
+                freelancers through Workreap and every single project was
+                delivered on time.
+              </p>
+              <div class="clients_user_row">
+                <div class="clients_avatar green">LP</div>
+                <div class="clients_user_info">
+                  <h3 class="clients_name">Laura Pierce</h3>
+                  <p class="clients_role">Marketing Director, BrandCo.</p>
+                  <div class="clients_stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clients_card">
+              <p class="clients_quote">❝</p>
+              <p class="clients_text">
+                As a freelancer, Workreap has completely transformed my career.
+                I now earn 3× more than I did on other platforms. The community
+                is amazing.
+              </p>
+              <div class="clients_user_row">
+                <div class="clients_avatar green">RJ</div>
+                <div class="clients_user_info">
+                  <h3 class="clients_name">Ravi Johnson</h3>
+                  <p class="clients_role">Freelance Developer</p>
+                  <div class="clients_stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta_section">
+        <div class="cta_container">
+          <h2 class="cta_title">Ready to Get Started?</h2>
+          <p class="cta_subtitle">
+            Join thousands of businesses finding top freelance talent today.
+          </p>
+
+          <div class="cta_buttons">
+            <button class="cta_button cta_primary">Hire a Freelancer</button>
+            <button class="cta_button cta_secondary">
+              Become a Freelancer
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq_section">
+        <div class="faq_container">
+          <div class="faq_left">
+            <span class="faq_label">Talk to support</span>
+            <h2 class="faq_title">Frequently Asked Questions</h2>
+            <p class="faq_text">
+              Find answers to your questions instantly. Need more guidance? Dive
+              into our extensive documentation for all your queries.
+            </p>
+            <button class="faq_button">Contact Our Team</button>
+          </div>
+
+          <div class="faq_right">
+            <div class="faq_item open">
+              <div class="faq_question_row">
+                <h3 class="faq_question">
+                  How do I get started as a freelancer?
+                </h3>
+                <span class="faq_sign">−</span>
+              </div>
+              <p class="faq_answer">
+                Signup, complete your profile, and start browsing projects.
+                Submit proposals and communicate with clients to get hired.
+              </p>
+            </div>
+
+            <div class="faq_item">
+              <div class="faq_question_row">
+                <h3 class="faq_question">What kind of projects can I find?</h3>
+                <span class="faq_sign">+</span>
+              </div>
+              <p class="faq_answer">
+                You can find short-term tasks, long-term contracts, creative
+                work, technical jobs, and many other freelance opportunities.
+              </p>
+            </div>
+
+            <div class="faq_item">
+              <div class="faq_question_row">
+                <h3 class="faq_question">How do I ensure payment security?</h3>
+                <span class="faq_sign">+</span>
+              </div>
+              <p class="faq_answer">
+                Use milestone payments and platform protection so funds are
+                released only when both sides are satisfied.
+              </p>
+            </div>
+
+            <div class="faq_item">
+              <div class="faq_question_row">
+                <h3 class="faq_question">
+                  What fees are involved for freelancers?
+                </h3>
+                <span class="faq_sign">+</span>
+              </div>
+              <p class="faq_answer">
+                A small service fee is usually charged on completed work, while
+                details depend on the plan you choose.
+              </p>
+            </div>
+
+            <div class="faq_item">
+              <div class="faq_question_row">
+                <h3 class="faq_question">
+                  How can I build trust with clients?
+                </h3>
+                <span class="faq_sign">+</span>
+              </div>
+              <p class="faq_answer">
+                Keep your profile complete, share real portfolio samples,
+                respond quickly, and deliver work consistently on time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter_section">
+        <div class="newsletter_container">
+          <h2 class="newsletter_title">
+            Stay Updated with Latest Opportunities
+          </h2>
+          <p class="newsletter_subtitle">
+            Get weekly job alerts and platform updates.
+          </p>
+
+          <div class="newsletter_form">
+            <input type="email" placeholder="Enter your email address..." />
+            <button class="newsletter_button">Subscribe</button>
+          </div>
+
+          <p class="newsletter_note">No spam. Unsubscribe anytime.</p>
+        </div>
+      </section>
+
+      <footer class="footer_section">
+        <div class="footer_container">
+          <div class="footer_left">
+            <div class="footer_logo">Mini Freelancer Hub</div>
+            <p class="footer_description">
+              The world's leading freelancer marketplace connecting businesses
+              with top-tier talent globally.
+            </p>
+            <div class="footer_socials">
+              <a href="#" class="footer_social_icon">f</a>
+              <a href="#" class="footer_social_icon">𝕏</a>
+              <a href="#" class="footer_social_icon">in</a>
+              <a href="#" class="footer_social_icon">▶</a>
+            </div>
+          </div>
+
+          <div class="footer_cols">
+            <div class="footer_col">
+              <h4 class="footer_col_header">Company</h4>
+              <ul class="footer_links">
+                <li><a href="#" class="footer_link">About Us</a></li>
+                <li><a href="#" class="footer_link">Careers</a></li>
+                <li><a href="#" class="footer_link">Blog</a></li>
+                <li><a href="#" class="footer_link">Press</a></li>
+              </ul>
+            </div>
+
+            <div class="footer_col">
+              <h4 class="footer_col_header">For Clients</h4>
+              <ul class="footer_links">
+                <li><a href="#" class="footer_link">How to Hire</a></li>
+                <li><a href="#" class="footer_link">Payment</a></li>
+                <li><a href="#" class="footer_link">Enterprise</a></li>
+                <li><a href="#" class="footer_link">Success Stories</a></li>
+              </ul>
+            </div>
+
+            <div class="footer_col">
+              <h4 class="footer_col_header">For Freelancers</h4>
+              <ul class="footer_links">
+                <li><a href="#" class="footer_link">How to Earn</a></li>
+                <li><a href="#" class="footer_link">Community</a></li>
+                <li><a href="#" class="footer_link">Resources</a></li>
+                <li><a href="#" class="footer_link">Affiliate Program</a></li>
+              </ul>
+            </div>
+
+            <div class="footer_col">
+              <h4 class="footer_col_header">Support</h4>
+              <ul class="footer_links">
+                <li><a href="#" class="footer_link">Help Center</a></li>
+                <li><a href="#" class="footer_link">Contact Us</a></li>
+                <li><a href="#" class="footer_link">Privacy Policy</a></li>
+                <li><a href="#" class="footer_link">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer_bottom">
+          <p class="footer_copyright">
+            &copy; 2026 Mini Freelancer Hub. All rights reserved.
+          </p>
+          <div class="footer_payments">
+            <span class="footer_payment_label">Accepted Payments:</span>
+            <span class="footer_payment_icon">VISA</span>
+            <span class="footer_payment_icon">MC</span>
+            <span class="footer_payment_icon">PayPal</span>
+          </div>
+        </div>
+      </footer>
+
+      <script>
+        const faqItems = document.querySelectorAll(".faq_item");
+
+        faqItems.forEach(function (item) {
+          item.addEventListener("click", function () {
+            const isOpen = item.classList.contains("open");
+
+            faqItems.forEach(function (otherItem) {
+              otherItem.classList.remove("open");
+              const sign = otherItem.querySelector(".faq_sign");
+
+              if (sign) {
+                sign.textContent = "+";
+              }
+            });
+
+            if (!isOpen) {
+              item.classList.add("open");
+
+              const sign = item.querySelector(".faq_sign");
+
+              if (sign) {
+                sign.textContent = "−";
+              }
+            }
+          });
+        });
+      </script>
+    </div>
+  </body>
 </html>
