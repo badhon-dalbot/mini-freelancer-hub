@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project</title>
+    <link rel="stylesheet" href="/styles/employee-dashboard.css">
+    <link rel="stylesheet" href="/styles/create-project.css">
+</head>
+
+<body class="dashboard_page create_project_page">
+    <aside class="dashboard_sidebar">
+
+        <div class="sidebar_profile">
+            <div class="sidebar_avatar" id="sidebarAvatar">SHS</div>
+            <div>
+                <h2 id="sidebarName">Sayed Hasan Sami</h2>
+                <p class="sidebar_status"><span></span>Active</p>
+            </div>
+        </div>
+
+        <a class="sidebar_create_button" href="/pages/create-project.html">Create a project</a>
+
+        <nav class="sidebar_nav">
+            <a class="sidebar_link" href="employee-dashboard.html">Insights</a>
+            <a class="sidebar_link" href="employee-projects.html">Manage projects</a>
+            <a class="sidebar_link" href="employee-tasks.html">Manage task</a>
+            <a class="sidebar_link" href="employee-find-freelancer.html">Find freelancer</a>
+            <a class="sidebar_link" href="employee-invoices.html">Invoices</a>
+            <a class="sidebar_link" href="employee-meetings.html">Meetings</a>
+        </nav>
+
+        <div class="sidebar_divider"></div>
+
+        <nav class="sidebar_nav sidebar_nav_secondary">
+            <a class="sidebar_link" href="#notifications">Notifications <span class="sidebar_badge">3</span></a>
+            <a class="sidebar_link" href="#messages">Messages</a>
+        </nav>
+
+        <div class="sidebar_footer">
+            <div class="sidebar_balance">
+                <span>Account balance:</span>
+                <strong>$1,080</strong>
+            </div>
+
+            <a class="sidebar_logout" href="/index.html">Logout</a>
+        </div>
+    </aside>
+
+    <main class="dashboard_main create_project_main">
+        <header class="dashboard_topbar">
+            <div class="dashboard_branding">
+                <img class="dashboard_logo" src="/Assests/logo.png" alt="Mini Freelancer Hub Logo">
+                <div class="dashboard_brand">Mini Freelancer Hub</div>
+            </div>
+
+            <div class="dashboard_actions">
+                <button class="topbar_icon_button" type="button" aria-label="Notifications"><img src="/Assests/notification_icon.png" alt="Notifications"><span>3</span></button>
+                <button class="topbar_icon_button" type="button" aria-label="Messages"><img src="/Assests/message_icon.png" alt="Messages"></button>
+                <div class="topbar_profile">SHS</div>
+            </div>
+        </header>
+
+        <section class="create_project_hero">
+            <h1>Choose where to start your project</h1>
+            <p>You can start a new project from scratch or you can use your previous posted job template</p>
+        </section>
+
+        <section class="create_project_options">
+            <button class="project_option_card" type="button">
+                <span class="project_option_icon">+</span>
+                <strong>Start a new project</strong>
+                <span>Create a new project from scratch</span>
+            </button>
+
+            <button class="project_option_card" type="button">
+                <span class="project_option_icon">▢</span>
+                <strong>Use template instead</strong>
+                <span>Create a new project using previous project</span>
+            </button>
+        </section>
+    </main>
+</body>
+
+</html>
