@@ -1,3 +1,5 @@
+console.log(localStorage);
+
 const dashboardName = new URLSearchParams(window.location.search).get('name') || 'Sayed Hasan Sami';
 const lastName = dashboardName.trim().split(' ')[2] || 'Sami';
 

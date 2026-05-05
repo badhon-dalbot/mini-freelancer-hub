@@ -24,9 +24,12 @@ const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const confirmPasswordInput = document.getElementById('confirm_password');
 
+// API configuration
+const REGISTER_ENDPOINT = 'https://freelancerhubbackend.onrender.com/auth/register';
+
 // Form submission
 if (registerForm) {
-  registerForm.addEventListener('click', (e) => {
+  registerForm.addEventListener('click', async (e) => {
     e.preventDefault();
     
     // Validation
@@ -90,42 +93,105 @@ if (registerForm) {
       return;
     }
     
-    // If validation passes
-    showMessage('Registration successful! Redirecting...', 'success');
-    console.log('Register data:', {
-      firstName: firstNameInput.value,
-      lastName: lastNameInput.value,
-      email: emailInput.value,
-      password: passwordInput.value
-    });
-    
-    // Simulate redirect after 1.5 seconds
-    setTimeout(() => {
-      window.location.href = '/pages/employee-dashboard.html';
-    }, 1500);
+    const payload = {
+      firstname: firstNameInput.value.trim(),
+      lastname: lastNameInput.value.trim(),
+      email: emailInput.value.trim().toLowerCase(),
+      password: passwordInput.value,
+    };
+
+    try {
+      setRegisterLoading(true);
+
+      const savedUser = await requestJSON(REGISTER_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      showMessage('Registration successful! Redirecting...', 'success');
+
+      localStorage.setItem('currentUser', JSON.stringify(savedUser));
+
+      setTimeout(() => {
+        window.location.href = '/pages/employee-dashboard.html';
+      }, 1200);
+    } catch (error) {
+      console.error('Registration request failed:', error);
+
+      if (isCorsOrNetworkError(error)) {
+        const fallbackUser = saveUserLocally(payload);
+        localStorage.setItem('currentUser', JSON.stringify(fallbackUser));
+        showMessage('Server blocked by CORS. Saved locally for now. Redirecting...', 'info');
+
+        setTimeout(() => {
+          window.location.href = '/pages/employee-dashboard.html';
+        }, 1200);
+      } else {
+        showMessage(error.message || 'Failed to save your data. Please try again.', 'error');
+      }
+    } finally {
+      setRegisterLoading(false);
+    }
   });
 }
 
-// Social button handlers
-const socialButtons = document.querySelectorAll('.social_button');
-socialButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
-    const provider = button.textContent.trim();
-    showMessage(`Registering with ${provider}...`, 'info');
-    console.log('OAuth with:', provider);
-    
-    // Simulate OAuth flow
-    setTimeout(() => {
-      showMessage(`${provider} registration would redirect to auth...`, 'success');
-    }, 1000);
-  });
-});
+
+
+
 
 // Utility functions
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+}
+
+async function requestJSON(url, options = {}) {
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status} ${response.statusText}`);
+  }
+  return response.json();
+}
+
+function isCorsOrNetworkError(error) {
+  if (!error) {
+    return false;
+  }
+
+  const message = String(error.message || '').toLowerCase();
+  return error.name === 'TypeError' || message.includes('failed to fetch') || message.includes('networkerror');
+}
+
+function saveUserLocally(payload) {
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  const existingIndex = users.findIndex(user => user.email === payload.email);
+
+  const userRecord = {
+    id: existingIndex > -1 ? users[existingIndex].id : Date.now(),
+    ...payload,
+    source: 'local-fallback'
+  };
+
+  if (existingIndex > -1) {
+    users[existingIndex] = { ...users[existingIndex], ...userRecord };
+  } else {
+    users.push(userRecord);
+  }
+
+  localStorage.setItem('users', JSON.stringify(users));
+  return userRecord;
+}
+
+function setRegisterLoading(isLoading) {
+  if (!registerForm) {
+    return;
+  }
+
+  registerForm.disabled = isLoading;
+  registerForm.textContent = isLoading ? 'Saving...' : 'Register →';
 }
 
 function showMessage(message, type) {

@@ -30,6 +30,53 @@ const signInForm = document.querySelector('.primary_button');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 
+async function handleSignIn() {
+  const loginUrl = 'https://freelancerhubbackend.onrender.com/auth/login';
+  const payload = {
+    email: emailInput.value,  
+    password: passwordInput.value
+  };
+
+  try {
+    const response = await fetch(loginUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    if (response.ok) {
+      showMessage('Sign in successful! Redirecting...', 'success');
+      // Store token and user info in localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      setTimeout(() => {
+        window.location.href = '/pages/employee-dashboard.html';
+      }, 1500);
+    } else {
+      showMessage('Invalid credentials. Please try again.', 'error');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+
+    if (isCorsOrNetworkError(error)) {
+      const fallbackUser = validateLoginLocally(payload);
+      if (fallbackUser) {
+        localStorage.setItem('token', 'local-token-' + Date.now());
+        localStorage.setItem('user', JSON.stringify(fallbackUser));
+        showMessage('Server blocked by CORS. Logged in locally for now. Redirecting...', 'info');
+        setTimeout(() => {
+          window.location.href = '/pages/employee-dashboard.html';
+        }, 1500);
+      } else {
+        showMessage('No local account found. Please register first.', 'error');
+      }
+    } else {
+      showMessage('Sign in failed. Please try again.', 'error');
+    }
+  }
+}
 if (signInForm) {
   signInForm.addEventListener('click', (e) => {
     e.preventDefault();
@@ -59,41 +106,33 @@ if (signInForm) {
       return;
     }
     
-    // If validation passes
-    showMessage('Sign in successful! Redirecting...', 'success');
-    console.log('Sign in data:', {
-      email: emailInput.value,
-      password: passwordInput.value,
-      rememberMe: document.querySelector('.remember_option input').checked
-    });
-    
-    // Simulate redirect after 1.5 seconds
-    setTimeout(() => {
-      window.location.href = '/pages/employee-dashboard.html';
-    }, 1500);
+    // Call API handler
+    handleSignIn();
   });
 }
 
-// Social button handlers
-const socialButtons = document.querySelectorAll('.social_button');
-socialButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
-    const provider = button.textContent.trim();
-    showMessage(`Signing in with ${provider}...`, 'info');
-    console.log('OAuth with:', provider);
-    
-    // Simulate OAuth flow
-    setTimeout(() => {
-      showMessage(`${provider} login would redirect to auth...`, 'success');
-    }, 1000);
-  });
-});
+
+
 
 // Utility functions
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+}
+
+function isCorsOrNetworkError(error) {
+  if (!error) {
+    return false;
+  }
+
+  const message = String(error.message || '').toLowerCase();
+  return error.name === 'TypeError' || message.includes('failed to fetch') || message.includes('networkerror');
+}
+
+function validateLoginLocally(payload) {
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  const user = users.find(u => u.email === payload.email && u.password === payload.password);
+  return user || null;
 }
 
 function showMessage(message, type) {
