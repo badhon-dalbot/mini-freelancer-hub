@@ -1,11 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="../styles/register.css">
 </head>
+
 <body>
     
+    <div class="signin_page">
+        <div class="signin_tabs">
+            <button class="signin_tab">Sign In</button>
+            <button class="signin_tab signin_tab_active">Create Account</button>
+        </div>
+        <div class="signin_shell">
+            <div class="left-part">
+
+                <h1 class="welcome-text">Welcome back to <br>Mini Freelancer Hub</h1>
+                <p class="sign-in-to-access">Sign in to access your dashboard, manage projects, and connect with top talent
+                    worldwide.</p>
+
+                <div class="left-part-elements">
+
+                    <div class="first-element">
+                        <div class="elements-texts">Instant Access</div>
+                        <p class="elements-texts-under">Resume where you left off immediately</p>
+                    </div>
+
+                    <div class="first-element">
+                        <div class="elements-texts">Real Time Messaging</div>
+                        <p class="elements-texts-under">Chat with clients and freelancers instantly</p>
+                    </div>
+
+                    <div class="first-element">
+                        <div class="elements-texts">Secure Payment</div>
+                        <p class="elements-texts-under">Your funds are always protected with escrow</p>
+                    </div>
+
+                    <div class="first-element">
+                        <div class="elements-texts">Project Dashboard</div>
+                        <p class="elements-texts-under">Track progress, milestones and deliverables</p>
+                    </div>
+
+                </div>
+
+                <div class="left_stats">
+                    <div class="stat_item">
+                        <strong>10K+</strong>
+                        <span>Active Users</span>
+                    </div>
+                    <div class="stat_item">
+                        <strong>50K+</strong>
+                        <span>Projects Done</span>
+                    </div>
+                    <div class="stat_item">
+                        <strong>4.9+</strong>
+                        <span>Avg Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-part">
+
+                <div class="right-part-elements">
+                    <div class="right-part-top-text">
+                        <h1>Register Your Account</h1>
+                    </div>
+
+                    <div class="auth_social_row">
+                        <button class="social_button" type="button">Google</button>
+                        <button class="social_button" type="button">Facebook</button>
+                    </div>
+
+                    <p class="signin_or">or register with email</p>
+
+                    <div class="form_fields">
+                        <label class="field_label" for="firstname">First Name</label>
+                        <input class="field_input" id="firstname" placeholder="Enter first name" type="text">
+
+                        <label class="field_label" for="lastname">Last Name</label>
+                        <input class="field_input" id="lastname" placeholder="Enter last name" type="text">
+
+                        <label class="field_label" for="email">Email Address</label>
+                        <input class="field_input" id="email" placeholder="you@example.com" type="email">
+
+                        <label class="field_label" for="password">Password</label>
+                        <input class="field_input" id="password" placeholder="Enter your password" type="password">
+
+                        <label class="field_label" for="confirm_password">Re-write Password</label>
+                        <input class="field_input" id="confirm_password" placeholder="Confirm your password" type="password">
+                    </div>
+
+                    <a href="/pages/employee-dashboard.html">
+                        <button class="primary_button" type="button">Register →</button>
+                    </a>
+                    <p class="signup_note">By registering, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </body>
+
+<script src="../scripts/register.js"></script>
+
 </html>

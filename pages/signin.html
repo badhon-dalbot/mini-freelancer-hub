@@ -1,11 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+    <link rel="stylesheet" href="../styles/signin.css">
 </head>
+
 <body>
     
+    <div class="signin_page">
+        <div class="signin_tabs">
+            <button class="signin_tab signin_tab_active">Sign In</button>
+            <button class="signin_tab">Create Account</button>
+        </div>
+        <div class="signin_shell">
+            <div class="left-part">
+
+                <h1 class="welcome-text">Welcome back to <br>Mini Freelancer Hub</h1>
+                <p class="sign-in-to-access">Sign in to access your dashboard, manage projects, and connect with top talent
+                    worldwide.</p>
+
+                <div class="left-part-elements">
+
+                    <div class="first-element">
+                        <div class="elements-texts">Instant Access</div>
+                        <p class="elements-texts-under">Resume where you left off immediately</p>
+                    </div>
+
+                    <div class="first-element">
+                        <div class="elements-texts">Real Time Messaging</div>
+                        <p class="elements-texts-under">Chat with clients and freelancers instantly</p>
+                    </div>
+
+                    <div class="first-element">
+                        <div class="elements-texts">Secure Payment</div>
+                        <p class="elements-texts-under">Your funds are always protected with escrow</p>
+                    </div>
+
+                    <div class="first-element">
+                        <div class="elements-texts">Project Dashboard</div>
+                        <p class="elements-texts-under">Track progress, milestones and deliverables</p>
+                    </div>
+
+                </div>
+
+                <div class="left_stats">
+                    <div class="stat_item">
+                        <strong>10K+</strong>
+                        <span>Active Users</span>
+                    </div>
+                    <div class="stat_item">
+                        <strong>50K+</strong>
+                        <span>Projects Done</span>
+                    </div>
+                    <div class="stat_item">
+                        <strong>4.9+</strong>
+                        <span>Avg Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-part">
+
+                <div class="right-part-elements">
+                    <div class="right-part-top-text">
+                        <h1>Sign In to Your Account</h1>
+                        <p class="create-account-text">Don't have an account? <a href="/pages/register.html">Create one free →</a></p>
+                    </div>
+
+                    <div class="auth_social_row">
+                        <button class="social_button" type="button">Google</button>
+                        <button class="social_button" type="button">Facebook</button>
+                    </div>
+
+                    <p class="signin_or">or sign in with email</p>
+
+                    <div class="form_fields">
+                        <label class="field_label" for="email">Email Address</label>
+                        <input class="field_input" id="email" placeholder="you@example.com" type="email">
+
+                        <label class="field_label" for="password">Password</label>
+                        <input class="field_input" id="password" placeholder="Enter your password" type="password">
+                    </div>
+
+                    <div class="form_options">
+                        <label class="remember_option">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a class="forget_pass" href="#">Forgot password?</a>
+                    </div>
+
+                    <a href="/pages/employee-dashboard.html">
+                        <button class="primary_button" type="button">Sign In →</button>
+                    </a>
+                    <p class="signup_note">By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </body>
+
+<script src="../scripts/signin.js"></script>
+
 </html>
