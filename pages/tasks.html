@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Freelancer Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="text-gray-800">
+
+    <!-- ========== NAVBAR ========== -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Left: Logo + Nav Links -->
+                <div class="flex items-center gap-8">
+                    <a href="#" class="text-base font-semibold text-gray-900">Mini Freelancer Hub</a>
+                    <nav class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+                        <a href="#" class="flex items-center gap-1 hover:text-gray-900">Explore <i
+                                class="fa-solid fa-chevron-down text-[10px]"></i></a>
+                        <a href="#" class="flex items-center gap-1 hover:text-gray-900">Find by Categories <i
+                                class="fa-solid fa-chevron-down text-[10px]"></i></a>
+                    </nav>
+                </div>
+
+                <!-- Right: Search + Auth -->
+                <div class="flex items-center gap-4">
+                    <div
+                        class="hidden md:flex items-center bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                        <input type="text" placeholder="Search"
+                            class="bg-transparent px-4 py-1.5 text-sm focus:outline-none w-48">
+                        <div
+                            class="flex items-center gap-1 px-3 py-1.5 border-l border-gray-200 text-xs text-gray-600 cursor-pointer">
+                            Freelancers <i class="fa-solid fa-chevron-down text-[9px]"></i>
+                        </div>
+                    </div>
+                    <a href="#" class="text-sm text-gray-700 hover:text-gray-900">Sign In</a>
+                    <a href="#"
+                        class="bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-5 py-1.5 rounded-md">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Top bar: Results count + Sort -->
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-lg font-semibold text-gray-900">23 search result(s) found</h1>
+            <div class="flex items-center gap-2 text-sm">
+                <span class="text-gray-500">Sort by</span>
+                <button
+                    class="flex items-center gap-2 bg-white border border-gray-200 rounded-md px-3 py-1.5 text-gray-700">
+                    Recent listing <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex gap-6">
+            <!-- ========== SIDEBAR FILTERS ========== -->
+            <aside class="w-64 shrink-0 hidden lg:block">
+                <div class="bg-white rounded-lg border border-gray-200 p-5 space-y-5">
+                    <!-- Search filter -->
+                    <details open class="border-b border-gray-100 pb-4">
+                        <summary class="flex items-center justify-between text-sm font-medium text-gray-800">
+                            Search
+                            <span><i class="fa-solid fa-plus icon-plus text-xs text-gray-400"></i><i
+                                    class="fa-solid fa-minus icon-minus text-xs text-gray-400"></i></span>
+                        </summary>
+                        <div class="mt-3 flex">
+                            <input type="text" placeholder="Search with keyword"
+                                class="flex-1 text-xs border border-gray-200 rounded-l-md px-3 py-2 focus:outline-none focus:border-green-500">
+                            <button class="bg-green-500 hover:bg-green-600 text-white px-3 rounded-r-md"><i
+                                    class="fa-solid fa-magnifying-glass text-xs"></i></button>
+                        </div>
+                    </details>
+
+                    <!-- Categories -->
+                    <details class="border-b border-gray-100 pb-4">
+                        <summary class="flex items-center justify-between text-sm font-medium text-gray-800">
+                            Categories
+                            <span><i class="fa-solid fa-plus icon-plus text-xs text-gray-400"></i><i
+                                    class="fa-solid fa-minus icon-minus text-xs text-gray-400"></i></span>
+                        </summary>
+                        <div class="mt-3 space-y-2 text-xs text-gray-600">
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500"> Web
+                                Development</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500">
+                                Graphic Design</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500">
+                                Digital Marketing</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500">
+                                Writing</label>
+                        </div>
+                    </details>
+
+                    <!-- Tags -->
+                    <details class="border-b border-gray-100 pb-4">
+                        <summary class="flex items-center justify-between text-sm font-medium text-gray-800">
+                            Tags
+                            <span><i class="fa-solid fa-plus icon-plus text-xs text-gray-400"></i><i
+                                    class="fa-solid fa-minus icon-minus text-xs text-gray-400"></i></span>
+                        </summary>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">React</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Figma</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">SEO</span>
+                        </div>
+                    </details>
+
+                    <!-- Price range -->
+                    <details class="border-b border-gray-100 pb-4">
+                        <summary class="flex items-center justify-between text-sm font-medium text-gray-800">
+                            Price range
+                            <span><i class="fa-solid fa-plus icon-plus text-xs text-gray-400"></i><i
+                                    class="fa-solid fa-minus icon-minus text-xs text-gray-400"></i></span>
+                        </summary>
+                        <div class="mt-3">
+                            <input type="range" min="0" max="1000" class="w-full accent-green-500">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>$0</span><span>$1000</span>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Location -->
+                    <details class="pb-2">
+                        <summary class="flex items-center justify-between text-sm font-medium text-gray-800">
+                            Location
+                            <span><i class="fa-solid fa-plus icon-plus text-xs text-gray-400"></i><i
+                                    class="fa-solid fa-minus icon-minus text-xs text-gray-400"></i></span>
+                        </summary>
+                        <div class="mt-3 space-y-2 text-xs text-gray-600">
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500">
+                                United States</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500">
+                                Canada</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" class="accent-green-500">
+                                Japan</label>
+                        </div>
+                    </details>
+
+                    <!-- Apply / Clear -->
+                    <div class="pt-2">
+                        <button
+                            class="w-full bg-green-500 hover:bg-green-600 text-white text-sm font-medium py-2 rounded-md">Apply
+                            filters</button>
+                        <button class="w-full text-xs text-gray-500 hover:text-gray-700 mt-2">Clear all filters</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ========== SERVICE CARDS GRID ========== -->
+            <section class="flex-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+                    <!-- CARD 1 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=47" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Madiha Begum</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Create a Stunning Online
+                                Presence</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">5.00 /5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$150</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b8?w=500&h=350&crop=entropy&cs=tinysrgb&fit=max"
+                                onerror="this.src='https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop'"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=12" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Sanat Pandey</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Logo design and unique
+                                brand Identity</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$50</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=33" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Sadi Shaikh</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Stunning UI/UX for iOS &
+                                Android</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$100</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 4 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover bg-white">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=5" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Lisa Johnson</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Google Ads Services</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$750</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 5 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=15" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Liam</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Blockchain Solution
+                                Development</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$100</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 6 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=44" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Sophia Lee</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Full-Stack Web
+                                Application Development</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> Canada
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$300</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 7 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=68" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Michael Thompson</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">IoT (Internet of Things)
+                                Solutions</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$500</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 8 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop&sat=-30"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=44" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Sophia Lee</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Full-Stack Web
+                                Application Development</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> Canada
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$200</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 9 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=5" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Lisa Johnson</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Google Ads Services</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United States (US)
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$750</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 10 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=400&h=300&fit=crop"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=20" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Sara Miller</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">AI Solution Development
+                            </h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> Germany
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$1,000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 11 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=300&fit=crop&q=80"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=29" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Yuki Tanaka</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">DALL·E Art Generation
+                            </h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> Japan
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$400</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CARD 12 -->
+                    <article
+                        class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop&q=80"
+                                alt="" class="w-full h-36 object-cover">
+                            <button
+                                class="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center heart-btn"><i
+                                    class="fa-regular fa-heart text-xs text-gray-600"></i></button>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img src="https://i.pravatar.cc/40?img=42" class="w-6 h-6 rounded-full" alt="">
+                                <span class="text-xs font-medium text-gray-800">Emma Wilson</span>
+                                <i class="fa-solid fa-circle-check verified-badge"></i>
+                            </div>
+                            <h3 class="text-sm font-semibold text-gray-900 leading-tight mb-2">Mobile App Development
+                                iOS & Android</h3>
+                            <div class="flex items-center gap-1 mb-2 star-rating">
+                                <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span class="text-[11px] text-gray-500 ml-1">0/5.0 User review</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
+                                <i class="fa-solid fa-location-dot"></i> United Kingdom
+                            </div>
+                            <div class="border-t border-gray-100 pt-3 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500">Starting from</span>
+                                <span class="text-sm font-semibold text-gray-900">$600</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- ========== PAGINATION ========== -->
+                <div class="flex justify-center items-center gap-2 mt-10">
+                    <button
+                        class="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50"><i
+                            class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button
+                        class="w-9 h-9 flex items-center justify-center rounded-md bg-green-500 text-white text-sm font-medium">1</button>
+                    <button
+                        class="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 text-gray-700 text-sm hover:bg-gray-50">2</button>
+                    <button
+                        class="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 text-gray-700 text-sm hover:bg-gray-50">3</button>
+                    <span class="text-gray-500 px-1">...</span>
+                    <button
+                        class="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 text-gray-700 text-sm hover:bg-gray-50">7</button>
+                    <button
+                        class="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50"><i
+                            class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-[#1a1d24] text-gray-300 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <!-- Brand column -->
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="text-white font-semibold text-base mb-3">Mini Freelancer Hub</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">The world's leading freelancer marketplace,
+                        connecting businesses with the talent globally.</p>
+                    <div class="flex gap-3 text-gray-400">
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-sm"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-youtube text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Company</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Press</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- For Clients -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">For Clients</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#" class="hover:text-white">How to Hire</a></li>
+                        <li><a href="#" class="hover:text-white">Payment</a></li>
+                        <li><a href="#" class="hover:text-white">Enterprise</a></li>
+                        <li><a href="#" class="hover:text-white">Success Stories</a></li>
+                    </ul>
+                </div>
+
+                <!-- For Freelancers -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">For Freelancers</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#" class="hover:text-white">How to Earn</a></li>
+                        <li><a href="#" class="hover:text-white">Communities</a></li>
+                        <li><a href="#" class="hover:text-white">Resources</a></li>
+                        <li><a href="#" class="hover:text-white">Affiliate Program</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Support</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div
+                class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-gray-500">©️ 2025 Mini Freelancer Hub. All rights reserved.</p>
+                <div class="flex items-center gap-3">
+                    <span class="bg-white px-2 py-1 rounded text-[10px] font-bold text-blue-700">VISA</span>
+                    <span class="bg-white px-2 py-1 rounded text-[10px] font-bold text-red-600">MC</span>
+                    <span class="bg-white px-2 py-1 rounded text-[10px] font-bold text-blue-500">PayPal</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

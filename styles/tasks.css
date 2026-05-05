@@ -1,0 +1,98 @@
+/* ========== GENERAL STYLES ========== */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f6f8;
+}
+
+/* ========== STAR RATING ========== */
+.star-rating {
+    color: #fbbf24;
+    font-size: 12px;
+}
+
+/* ========== VERIFIED BADGE ========== */
+.verified-badge {
+    color: #22c55e;
+    font-size: 11px;
+}
+
+/* ========== DETAILS / ACCORDION STYLES ========== */
+details>summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+details>summary .icon-plus {
+    display: inline;
+}
+
+details>summary .icon-minus {
+    display: none;
+}
+
+details[open]>summary .icon-plus {
+    display: none;
+}
+
+details[open]>summary .icon-minus {
+    display: inline;
+}
+
+/* ========== HEART BUTTON ANIMATION ========== */
+.heart-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.heart-btn:hover {
+    background-color: #fff !important;
+    transform: scale(1.1);
+}
+
+.heart-btn.liked i {
+    color: #ef4444 !important;
+}
+
+.heart-btn.liked i::before {
+    content: '\f004';
+    /* solid heart */
+}
+
+/* ========== BUTTON STYLES ========== */
+button {
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ========== LINKS STYLES ========== */
+a {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* ========== IMAGE ERROR HANDLING ========== */
+img {
+    background-color: #f3f4f6;
+    display: block;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 1024px) {
+    .star-rating {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .star-rating span {
+        display: none;
+    }
+}
