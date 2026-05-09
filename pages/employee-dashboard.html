@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Dashboard</title>
     <link rel="stylesheet" href="/styles/employee-dashboard.css">
+    <link rel="stylesheet" href="/styles/create-project.css">
 </head>
 
-<body class="dashboard_page">
+<body class="dashboard_page create_project_page">
     <aside class="dashboard_sidebar">
 
         <div class="sidebar_profile">
@@ -22,7 +23,7 @@
         <a class="sidebar_create_button" href="/pages/create-project.html">Create a project</a>
 
         <nav class="sidebar_nav">
-            <a class="sidebar_link active" href="employee-dashboard.html">Insights</a>
+            <a class="sidebar_link" href="employee-dashboard.html">Insights</a>
             <a class="sidebar_link" href="employee-projects.html">Manage projects</a>
             <a class="sidebar_link" href="employee-tasks.html">Manage task</a>
             <a class="sidebar_link" href="employee-find-freelancer.html">Find freelancer</a>
@@ -47,7 +48,7 @@
         </div>
     </aside>
 
-    <main class="dashboard_main">
+    <main class="dashboard_main create_project_main">
         <header class="dashboard_topbar">
             <div class="dashboard_branding">
                 <img class="dashboard_logo" src="/Assests/logo.png" alt="Mini Freelancer Hub Logo">
@@ -55,37 +56,31 @@
             </div>
 
             <div class="dashboard_actions">
-                <button class="topbar_icon_button" type="button" aria-label="Notifications"><img
-                        src="/Assests/notification_icon.png" alt="Notifications"><span>3</span></button>
-                <button class="topbar_icon_button" type="button" aria-label="Messages"><img
-                        src="/Assests/message_icon.png" alt="Messages"></button>
+                <button class="topbar_icon_button" type="button" aria-label="Notifications"><img src="/Assests/notification_icon.png" alt="Notifications"><span>3</span></button>
+                <button class="topbar_icon_button" type="button" aria-label="Messages"><img src="/Assests/message_icon.png" alt="Messages"></button>
                 <div class="topbar_profile">SHS</div>
             </div>
         </header>
 
-        <section class="dashboard_hero">
-            <h1 id="greetingTitle">Good morning, Sami</h1>
-            <p id="greetingText">Here's what's happening with your account today.</p>
+        <section class="create_project_hero">
+            <h1>Choose where to start your project</h1>
+            <p>You can start a new project from scratch or you can use your previous posted job template</p>
         </section>
 
-        <section class="stats_row" id="statsRow"></section>
+        <section class="create_project_options">
+            <button class="project_option_card" type="button">
+                <span class="project_option_icon">+</span>
+                <strong>Start a new project</strong>
+                <span>Create a new project from scratch</span>
+            </button>
 
-        <section class="content_layout">
-            <div class="overview_stack">
-                <div class="overview_cards" id="overviewCards"></div>
-            </div>
-
-            <aside class="payouts_panel">
-                <h2>Payouts method</h2>
-                <div class="payout_list" id="payoutList"></div>
-                <p class="payout_note">Choose a payout method to receive your earned amount without delay. Terms and
-                    Privacy Policy apply.</p>
-            </aside>
+            <button class="project_option_card" type="button">
+                <span class="project_option_icon">▢</span>
+                <strong>Use template instead</strong>
+                <span>Create a new project using previous project</span>
+            </button>
         </section>
-
     </main>
-
-    <script src="/scripts/employee-dashboard.js"></script>
 </body>
 
 </html>
