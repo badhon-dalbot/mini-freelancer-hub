@@ -5,23 +5,19 @@ const lastName = dashboardName.trim().split(' ')[2] || 'Sami';
 
 const dashboardState = {
     stats: [
-        { icon: '∣∣', tone: 'violet', label: 'Total income', value: 1080, action: 'Refresh' },
-        { icon: '⌂', tone: 'green', label: 'Withdraw requested', value: 0, action: 'Show all invoices' },
-        { icon: '▭', tone: 'pink', label: 'Pending income', value: 0, action: 'Refresh' },
-        { icon: '⌁', tone: 'orange', label: 'Available in account', value: 1080, action: 'Withdraw now' }
+        { icon: '◔', tone: 'orange', label: 'Ongoing projects', value: 0, action: 'View' },
+        { icon: '✓', tone: 'green', label: 'Completed projects', value: 1, action: 'View' },
+        { icon: '✕', tone: 'pink', label: 'Canceled projects', value: 0, action: 'View' },
+        { icon: '▣', tone: 'violet', label: 'Completed tasks', value: 2, action: 'View' }
     ],
     overviewCards: [
-        { badge: 'success', badgeLabel: 'Completed', value: '1', label: 'Completed projects' },
-        { badge: 'warning', badgeLabel: 'Ongoing', value: '1', label: 'Ongoing projects' },
-        { badge: 'danger', badgeLabel: 'Cancelled', value: '0', label: 'Cancelled projects' },
-        { badge: 'brand', badgeLabel: 'Tasks sold', value: '2', label: 'Tasks sold' },
         { badge: 'warning', badgeLabel: 'Ongoing', value: '0', label: 'Ongoing tasks' },
-        { badge: 'danger', badgeLabel: 'Cancelled', value: '1', label: 'Cancelled tasks' }
+        { badge: 'danger', badgeLabel: 'Cancelled', value: '1', label: 'Canceled tasks' },
+        { badge: 'danger', badgeLabel: 'Open', value: '1', label: 'Disputes' }
     ],
     payouts: [
-        { label: 'Bkash', icon: 'B', tone: 'blue' },
-        { label: 'Nagad', icon: 'N', tone: 'orange' },
-        { label: 'Setup bank account', icon: 'B', tone: 'gray' }
+        { label: 'Wallet balance', icon: '⌂', value: 7450, action: 'Add credit' },
+        { label: 'Unread messages', icon: '▭', value: 0, action: 'View all' }
     ],
     charts: {
         weekly: {
@@ -102,13 +98,12 @@ function renderOverviewCards() {
 function renderPayouts() {
     payoutList.innerHTML = dashboardState.payouts.map(function (item) {
         return `
-            <button class="payout_item" type="button">
-                <span class="payout_left">
-                    <span class="payout_icon ${item.tone}">${item.icon}</span>
-                    <span>${item.label}</span>
-                </span>
-                <span>›</span>
-            </button>
+            <article class="payout_item">
+                <span class="payout_icon">${item.icon}</span>
+                <span class="payout_label">${item.label}</span>
+                <span class="payout_value">${item.label === 'Wallet balance' ? formatCurrency(item.value) : item.value}</span>
+                <span class="payout_action">${item.action}</span>
+            </article>
         `;
     }).join('');
 }
@@ -203,18 +198,28 @@ function renderFilters(activeKey) {
 }
 
 function setGreeting() {
-    sidebarName.textContent = dashboardName;
-    sidebarAvatar.textContent = dashboardName
-        .split(' ')
-        .map(function (part) {
-            return part.charAt(0);
-        })
-        .join('')
-        .slice(0, 3)
-        .toUpperCase();
+    if (sidebarName) {
+        sidebarName.textContent = dashboardName;
+    }
 
-    greetingTitle.textContent = `${getGreeting()}, ${lastName} 👋`;
-    greetingText.textContent = 'Here is what is happening with your account today.';
+    if (sidebarAvatar) {
+        sidebarAvatar.textContent = dashboardName
+            .split(' ')
+            .map(function (part) {
+                return part.charAt(0);
+            })
+            .join('')
+            .slice(0, 3)
+            .toUpperCase();
+    }
+
+    if (greetingTitle) {
+        greetingTitle.textContent = `${getGreeting()}, ${lastName} 👋`;
+    }
+
+    if (greetingText) {
+        greetingText.textContent = 'Here is what is happening with your account today.';
+    }
 }
 
 function setupSidebarMenuToggle() {

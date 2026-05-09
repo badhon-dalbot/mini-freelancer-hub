@@ -394,6 +394,8 @@
     cursor: pointer;
     text-align: center;
     justify-content: center;
+    text-decoration: none;
+    color: inherit;
 }
 
 .project_option_card strong {

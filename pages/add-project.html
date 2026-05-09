@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link rel="stylesheet" href="/styles/employee-dashboard.css">
+    <link rel="stylesheet" href="/styles/create-project.css">
+</head>
+
+<body class="dashboard_page create_project_page">
+    <aside class="dashboard_sidebar">
+
+        <div class="sidebar_profile">
+            <div class="sidebar_avatar" id="sidebarAvatar">SHS</div>
+            <div>
+                <h2 id="sidebarName">Sayed Hasan Sami</h2>
+                <p class="sidebar_status"><span></span>Active</p>
+            </div>
+        </div>
+
+        <a class="sidebar_create_button active" href="/pages/create-project.html">Create a project</a>
+
+        <nav class="sidebar_nav">
+            <a class="sidebar_link" href="/pages/employee-dashboard.html">Insights</a>
+            <a class="sidebar_link" href="/pages/employee-dashboard.html#projects">Manage projects</a>
+            <a class="sidebar_link" href="/pages/tasks.html">Manage task</a>
+            <a class="sidebar_link" href="#disputes">Disputes</a>
+            <a class="sidebar_link" href="#invoices">Invoices</a>
+            <a class="sidebar_link" href="#meetings">Meetings</a>
+        </nav>
+
+        <div class="sidebar_divider"></div>
+
+        <nav class="sidebar_nav sidebar_nav_secondary">
+            <a class="sidebar_link" href="#notifications">Notifications <span class="sidebar_badge">3</span></a>
+            <a class="sidebar_link" href="#messages">Messages</a>
+        </nav>
+
+        <div class="sidebar_footer">
+            <div class="sidebar_balance">
+                <span>Account balance:</span>
+                <strong>$1,080</strong>
+            </div>
+
+            <a class="sidebar_logout" href="/index.html">Logout</a>
+        </div>
+    </aside>
+
+    <main class="dashboard_main create_project_main">
+        <header class="dashboard_topbar">
+            <div class="dashboard_branding">
+                <img class="dashboard_logo" src="/Assests/logo.png" alt="Mini Freelancer Hub Logo">
+                <div class="dashboard_brand">Mini Freelancer Hub</div>
+            </div>
+
+            <div class="dashboard_actions">
+                <button class="topbar_icon_button" type="button" aria-label="Notifications">
+                    <img src="/Assests/notification_icon.png" alt="Notifications">
+                    <span>3</span>
+                </button>
+                <button class="topbar_icon_button" type="button" aria-label="Messages">
+                    <img src="/Assests/message_icon.png" alt="Messages">
+                </button>
+                <div class="topbar_profile">SHS</div>
+            </div>
+        </header>
+
+        <section class="create_project_layout">
+            <aside class="create_project_steps" aria-label="Create project steps">
+                <div class="create_step active">
+                    <span class="create_step_icon">1</span>
+                    <div>
+                        <strong>About project</strong>
+                        <p>Add details about your project that explain what freelancers should do.</p>
+                    </div>
+                </div>
+
+                <div class="create_step">
+                    <span class="create_step_icon">2</span>
+                    <div>
+                        <strong>Freelancer preferences</strong>
+                        <p>Select skills, location, and other filters to find the right match.</p>
+                    </div>
+                </div>
+
+                <div class="create_step">
+                    <span class="create_step_icon">3</span>
+                    <div>
+                        <strong>Recommended freelancers</strong>
+                        <p>Review suggested freelancers before sending invitations.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="create_project_panel">
+                <div class="create_project_hero">
+                    <h1>Tell us about your project</h1>
+                    <p>Add your project details, budget, and requirements so freelancers can understand the work quickly.</p>
+                </div>
+
+                <form class="create_project_form">
+                    <div class="form_field form_field_full">
+                        <label for="projectTitle">Add your project title</label>
+                        <input id="projectTitle" type="text" placeholder="Enter your project title">
+                    </div>
+
+                    <div class="form_field form_field_full">
+                        <label>Select project type</label>
+                        <div class="project_type_grid">
+                            <label class="project_type_card selected">
+                                <input type="radio" name="projectType" checked>
+                                <span class="project_type_icon">▦</span>
+                                <span class="project_type_copy">
+                                    <strong>Fixed</strong>
+                                    <small>Pay freelancer on fixed milestone rate</small>
+                                </span>
+                                <span class="project_type_dot">●</span>
+                            </label>
+
+                            <label class="project_type_card">
+                                <input type="radio" name="projectType">
+                                <span class="project_type_icon">◔</span>
+                                <span class="project_type_copy">
+                                    <strong>Hourly</strong>
+                                    <small>Pay each freelancer on hourly rate</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form_field form_field_full project_notice">
+                        <div class="project_notice_left">
+                            <span class="project_notice_icon">$</span>
+                            <div>
+                                <strong>Split your project into milestones</strong>
+                                <p>You can also let your freelancer bid on this project based on their milestones, and then you pay them on each completed milestone separately.</p>
+                            </div>
+                        </div>
+                        <label class="project_toggle" aria-label="Enable milestones">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <div class="form_row">
+                        <div class="form_field">
+                            <label for="minBudget">Add minimum fixed budget</label>
+                            <input id="minBudget" type="text" placeholder="Enter min price">
+                        </div>
+                        <div class="form_field">
+                            <label for="maxBudget">Add maximum fixed budget</label>
+                            <input id="maxBudget" type="text" placeholder="Enter max price">
+                        </div>
+                    </div>
+
+                    <div class="form_row">
+                        <div class="form_field">
+                            <label for="duration">Project duration</label>
+                            <select id="duration">
+                                <option>Choose duration</option>
+                                <option>1 week</option>
+                                <option>2 weeks</option>
+                                <option>1 month</option>
+                            </select>
+                        </div>
+                        <div class="form_field">
+                            <label for="category">Project category</label>
+                            <select id="category">
+                                <option>Choose category</option>
+                                <option>Web Development</option>
+                                <option>UI/UX Design</option>
+                                <option>Marketing</option>
+                                <option>Writing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form_field form_field_full">
+                        <label for="location">Add location</label>
+                        <select id="location">
+                            <option>Select location</option>
+                            <option>Remote</option>
+                            <option>On site</option>
+                            <option>Hybrid</option>
+                        </select>
+                    </div>
+
+                    <div class="form_field form_field_full">
+                        <div class="field_label_row">
+                            <label for="description">Project description</label>
+                            <button class="ai_write_button" type="button">Write with AI</button>
+                        </div>
+                        <textarea id="description" rows="9" placeholder="Paragraph"></textarea>
+                    </div>
+
+                    <div class="form_field form_field_full">
+                        <label for="attachments">Add media / attachments <span>(optional)</span></label>
+                        <div class="upload_dropzone">
+                            <input id="attachments" type="file" multiple>
+                            <span>Click to upload files or drag and drop</span>
+                            <button type="button" class="upload_add_button" aria-label="Add attachment">+</button>
+                        </div>
+                    </div>
+
+                    <div class="create_form_actions">
+                        <button class="save_continue_button" type="submit">Save &amp; continue →</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
