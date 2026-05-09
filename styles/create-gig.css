@@ -1,0 +1,312 @@
+.create_gig_main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.create_gig_shell {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gig_tabs {
+    background: #fff;
+    border-radius: 12px;
+    padding: 0 18px;
+    border: 1px solid #edf1f7;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.gig_tab {
+    border: none;
+    background: transparent;
+    color: #8a94a8;
+    padding: 14px 0 12px;
+    font-size: 13px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.gig_tab.active {
+    color: #202938;
+    border-bottom-color: #f15922;
+    font-weight: 500;
+}
+
+.gig_panel_wrap {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #edf1f7;
+    overflow: hidden;
+}
+
+.gig_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.gig_panel {
+    display: none;
+    padding: 20px 18px;
+}
+
+.gig_panel.active {
+    display: block;
+}
+
+.gig_panel label {
+    display: block;
+    color: #202938;
+    font-size: 14px;
+    margin: 0 0 8px;
+}
+
+.gig_panel input,
+.gig_panel select,
+.gig_panel textarea {
+    width: 100%;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #fff;
+    color: #1f2937;
+    font: inherit;
+    padding: 11px 12px;
+    margin-bottom: 14px;
+    outline: none;
+}
+
+.gig_panel input:focus,
+.gig_panel select:focus,
+.gig_panel textarea:focus {
+    border-color: #f15922;
+    box-shadow: 0 0 0 3px rgba(241, 89, 34, 0.1);
+}
+
+.field_heading_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 2px;
+}
+
+.ai_write_button {
+    border: 1px solid #e9d7ff;
+    border-radius: 999px;
+    background: #f8f5ff;
+    color: #8f4de8;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.editor_shell {
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.editor_toolbar {
+    height: 30px;
+    padding: 0 10px;
+    border-bottom: 1px solid #d8dee8;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #5f6678;
+    font-size: 12px;
+    background: #fafbfc;
+}
+
+.editor_shell textarea {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    min-height: 210px;
+    resize: vertical;
+}
+
+.tag_list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: -4px;
+    min-height: 20px;
+}
+
+.tag_chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    background: #eef2f7;
+    color: #374151;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.tag_chip button {
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.panel_intro {
+    margin-bottom: 14px;
+}
+
+.panel_intro h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.panel_intro p,
+.helper_text {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.field_split {
+    display: flex;
+    gap: 12px;
+}
+
+.field_split > div {
+    flex: 1;
+}
+
+.upload_box {
+    border: 1px dashed #d6dbe5;
+    border-radius: 10px;
+    background: #fafcff;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.upload_box input {
+    display: none;
+}
+
+.upload_box span {
+    font-size: 14px;
+    color: #273043;
+}
+
+.upload_box small {
+    color: #7b8294;
+    font-size: 12px;
+}
+
+.attachment_list {
+    margin: 0;
+    padding-left: 18px;
+    color: #4b5563;
+    font-size: 13px;
+}
+
+.attachment_list li {
+    margin-bottom: 6px;
+}
+
+.faq_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.faq_item {
+    border: 1px solid #e5e7ef;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.faq_item input,
+.faq_item textarea {
+    margin-bottom: 10px;
+}
+
+.faq_item textarea {
+    margin-bottom: 0;
+    min-height: 92px;
+}
+
+.outline_button {
+    border: 1px solid #d6dbe5;
+    border-radius: 9px;
+    background: #fff;
+    color: #455065;
+    padding: 9px 12px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.panel_footer {
+    border-top: 1px solid #edf1f7;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.panel_footer p {
+    margin: 0;
+    color: #202938;
+    font-size: 13px;
+}
+
+.save_continue_button {
+    border: none;
+    border-radius: 8px;
+    background: #f15922;
+    color: #fff;
+    padding: 11px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.field_error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+@media (max-width: 840px) {
+    .gig_tabs {
+        overflow-x: auto;
+        gap: 16px;
+    }
+
+    .field_split {
+        flex-direction: column;
+    }
+
+    .panel_footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .save_continue_button {
+        width: 100%;
+    }
+}

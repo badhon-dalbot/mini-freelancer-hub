@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Create Gig</title>
     <link rel="stylesheet" href="/styles/employee-dashboard.css">
+    <link rel="stylesheet" href="/styles/create-gig.css">
 </head>
 
-<body class="dashboard_page">
+<body class="dashboard_page create_gig_page">
     <aside class="dashboard_sidebar user_dashboard_sidebar">
         <a class="sidebar_quick_button" href="/pages/user-dashboard.html" aria-label="Open dashboard menu">
             <span></span><span></span><span></span><span></span>
@@ -47,7 +48,7 @@
         </a>
 
         <nav class="sidebar_nav sidebar_nav_primary" aria-label="Dashboard navigation">
-            <a class="sidebar_link active" href="/pages/user-dashboard.html">
+            <a class="sidebar_link" href="/pages/user-dashboard.html">
                 <span class="sidebar_link_left">
                     <span class="sidebar_icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
@@ -60,8 +61,8 @@
                 </span>
             </a>
 
-            <div class="sidebar_group">
-                <button class="sidebar_link sidebar_group_button" type="button" aria-expanded="false"
+            <div class="sidebar_group is-open">
+                <button class="sidebar_link sidebar_group_button" type="button" aria-expanded="true"
                     aria-controls="userProjectsSubmenu">
                     <span class="sidebar_link_left">
                         <span class="sidebar_icon" aria-hidden="true">
@@ -82,7 +83,7 @@
                     </span>
                 </button>
 
-                <div class="sidebar_submenu" id="userProjectsSubmenu" hidden>
+                <div class="sidebar_submenu" id="userProjectsSubmenu">
                     <a class="sidebar_subitem" href="/pages/explore-projects.html">Explore projects</a>
                     <a class="sidebar_subitem" href="#my-projects">My projects</a>
                 </div>
@@ -185,7 +186,7 @@
         </div>
     </aside>
 
-    <main class="dashboard_main">
+    <main class="dashboard_main create_gig_main">
         <header class="dashboard_topbar">
             <div class="dashboard_branding">
                 <img class="dashboard_logo" src="/Assests/logo.png" alt="Mini Freelancer Hub Logo">
@@ -193,39 +194,154 @@
             </div>
 
             <div class="dashboard_actions">
-                <button class="topbar_icon_button" type="button" aria-label="Notifications"><img
-                        src="/Assests/notification_icon.png" alt="Notifications"><span>3</span></button>
-                <button class="topbar_icon_button" type="button" aria-label="Messages"><img
-                        src="/Assests/message_icon.png" alt="Messages"></button>
+                <button class="topbar_icon_button" type="button" aria-label="Notifications">
+                    <img src="/Assests/notification_icon.png" alt="Notifications">
+                    <span>3</span>
+                </button>
+                <button class="topbar_icon_button" type="button" aria-label="Messages">
+                    <img src="/Assests/message_icon.png" alt="Messages">
+                </button>
                 <div class="topbar_profile" id="topbarProfile">SHS</div>
             </div>
         </header>
 
-        <section class="dashboard_hero">
-            <h1 id="greetingTitle">Good morning, Sami</h1>
-            <p id="greetingText">Here's what's happening with your account today.</p>
-        </section>
+        <section class="create_gig_shell">
+            <nav class="gig_tabs" aria-label="Create gig steps">
+                <button class="gig_tab active" type="button" data-tab="introduction">Task introduction</button>
+                <button class="gig_tab" type="button" data-tab="pricing">Task pricing</button>
+                <button class="gig_tab" type="button" data-tab="media">Media/Attachments</button>
+                <button class="gig_tab" type="button" data-tab="faq">Common FAQ's</button>
+            </nav>
 
-        <section class="stats_row" id="statsRow"></section>
+            <div class="gig_panel_wrap">
+                <form class="gig_form" id="createGigForm" novalidate>
+                    <section class="gig_panel active" data-panel="introduction">
+                        <div class="field_heading_row">
+                            <label for="taskTitle">Add task title:</label>
+                            <button class="ai_write_button" type="button" id="aiTitleButton">Write with AI</button>
+                        </div>
+                        <input id="taskTitle" name="taskTitle" type="text" placeholder="Enter your task title" required>
 
-        <section class="content_layout">
-            <div class="overview_stack">
-                <div class="overview_cards" id="overviewCards"></div>
+                        <label for="taskCategory">Choose category:</label>
+                        <select id="taskCategory" name="taskCategory" required>
+                            <option value="">Choose category</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Content Writing">Content Writing</option>
+                        </select>
+
+                        <label for="taskCountry">Country:</label>
+                        <select id="taskCountry" name="taskCountry" required>
+                            <option value="">Choose country</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+
+                        <div class="field_heading_row">
+                            <label for="taskIntroduction">Task introduction</label>
+                            <button class="ai_write_button" type="button" id="aiIntroButton">Write with AI</button>
+                        </div>
+                        <div class="editor_shell">
+                            <div class="editor_toolbar">
+                                <span>Paragraph</span>
+                                <span>B</span>
+                                <span>I</span>
+                                <span>U</span>
+                                <span>\"</span>
+                                <span>•</span>
+                                <span>1.</span>
+                            </div>
+                            <textarea id="taskIntroduction" name="taskIntroduction" rows="10" required></textarea>
+                        </div>
+
+                        <label for="taskTags">Tags:</label>
+                        <input id="taskTags" name="taskTags" type="text" placeholder="Add tags and press Enter">
+                        <div id="tagList" class="tag_list"></div>
+                    </section>
+
+                    <section class="gig_panel" data-panel="pricing">
+                        <div class="panel_intro">
+                            <h2>Task pricing</h2>
+                            <p>Set your budget and delivery timeline for this gig.</p>
+                        </div>
+
+                        <div class="field_split">
+                            <div>
+                                <label for="priceType">Pricing type:</label>
+                                <select id="priceType" name="priceType" required>
+                                    <option value="Fixed">Fixed price</option>
+                                    <option value="Hourly">Hourly rate</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="deliveryTime">Delivery time:</label>
+                                <select id="deliveryTime" name="deliveryTime" required>
+                                    <option value="">Choose duration</option>
+                                    <option value="3 days">3 days</option>
+                                    <option value="7 days">7 days</option>
+                                    <option value="14 days">14 days</option>
+                                    <option value="30 days">30 days</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field_split">
+                            <div>
+                                <label for="minBudget">Minimum budget ($)</label>
+                                <input id="minBudget" name="minBudget" type="number" min="1" placeholder="Enter min budget" required>
+                            </div>
+
+                            <div>
+                                <label for="maxBudget">Maximum budget ($)</label>
+                                <input id="maxBudget" name="maxBudget" type="number" min="1" placeholder="Enter max budget" required>
+                            </div>
+                        </div>
+
+                        <p class="helper_text">Buyers will see this budget range before sending an offer.</p>
+                    </section>
+
+                    <section class="gig_panel" data-panel="media">
+                        <div class="panel_intro">
+                            <h2>Media / Attachments</h2>
+                            <p>Upload reference files or sample media for your gig.</p>
+                        </div>
+
+                        <label class="upload_box" for="gigAttachments">
+                            <input id="gigAttachments" name="gigAttachments" type="file" multiple>
+                            <span>Click to upload files or drag and drop</span>
+                            <small>PNG, JPG, PDF, DOCX up to 5 files</small>
+                        </label>
+
+                        <ul id="attachmentList" class="attachment_list"></ul>
+                    </section>
+
+                    <section class="gig_panel" data-panel="faq">
+                        <div class="panel_intro">
+                            <h2>Common FAQ's</h2>
+                            <p>Add a few common questions and answers for buyers.</p>
+                        </div>
+
+                        <div id="faqList" class="faq_list"></div>
+
+                        <button id="addFaqButton" class="outline_button" type="button">+ Add FAQ</button>
+                    </section>
+
+                    <footer class="panel_footer">
+                        <p id="saveMessage">Click "Save &amp; Continue" to add latest changes made by you</p>
+                        <button class="save_continue_button" type="submit">Save &amp; Continue</button>
+                    </footer>
+                </form>
             </div>
-
-            <aside class="payouts_panel">
-                <h2>Payouts method</h2>
-                <div class="payout_list" id="payoutList"></div>
-                <p class="payout_note">Choose a payout method to receive your earned amount without delay. Terms and
-                    Privacy Policy apply.</p>
-            </aside>
         </section>
-
     </main>
 
     <script src="/scripts/user-session.js"></script>
     <script src="/scripts/sidebar-menu.js"></script>
-    <script src="/scripts/employee-dashboard.js"></script>
+    <script src="/scripts/create-project.js"></script>
 </body>
 
 </html>
