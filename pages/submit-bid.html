@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Submit Bid</title>
     <link rel="stylesheet" href="/styles/employee-dashboard.css">
+    <link rel="stylesheet" href="/styles/job-flow.css">
 </head>
 
-<body class="dashboard_page">
+<body class="dashboard_page job_flow_page" data-page="submit-bid">
     <aside class="dashboard_sidebar user_dashboard_sidebar">
         <a class="sidebar_quick_button" href="/pages/user-dashboard.html" aria-label="Open dashboard menu">
             <span></span><span></span><span></span><span></span>
@@ -44,7 +45,7 @@
         </a>
 
         <nav class="sidebar_nav sidebar_nav_primary" aria-label="Dashboard navigation">
-            <a class="sidebar_link active" href="/pages/user-dashboard.html">
+            <a class="sidebar_link" href="/pages/user-dashboard.html">
                 <span class="sidebar_link_left">
                     <span class="sidebar_icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -56,8 +57,8 @@
                 </span>
             </a>
 
-            <div class="sidebar_group">
-                <button class="sidebar_link sidebar_group_button" type="button" aria-expanded="false" aria-controls="userProjectsSubmenu">
+            <div class="sidebar_group is-open">
+                <button class="sidebar_link sidebar_group_button" type="button" aria-expanded="true" aria-controls="userProjectsSubmenu">
                     <span class="sidebar_link_left">
                         <span class="sidebar_icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -73,7 +74,7 @@
                     </span>
                 </button>
 
-                <div class="sidebar_submenu" id="userProjectsSubmenu" hidden>
+                <div class="sidebar_submenu" id="userProjectsSubmenu">
                     <a class="sidebar_subitem" href="/pages/explore-projects.html">Explore projects</a>
                     <a class="sidebar_subitem" href="#my-projects">My projects</a>
                 </div>
@@ -168,47 +169,72 @@
         </div>
     </aside>
 
-    <main class="dashboard_main">
-        <header class="dashboard_topbar">
-            <div class="dashboard_branding">
-                <img class="dashboard_logo" src="/Assests/logo.png" alt="Mini Freelancer Hub Logo">
-                <div class="dashboard_brand">Mini Freelancer Hub</div>
-            </div>
+    <main class="job_flow_main">
+        <div class="job_flow_shell">
+            <section class="job_flow_content">
+                <article class="job_flow_card job_intro_card">
+                    <div class="job_intro_top">
+                        <div>
+                            <h1 id="jobTitle" class="job_intro_title">Website Design and Front-End Development</h1>
+                            <div id="jobMeta" class="job_intro_meta">
+                                <span>Posted 2 years ago</span>
+                                <span>Remote</span>
+                            </div>
+                        </div>
 
-            <div class="dashboard_actions">
-                <button class="topbar_icon_button" type="button" aria-label="Notifications"><img
-                        src="/Assests/notification_icon.png" alt="Notifications"><span>3</span></button>
-                <button class="topbar_icon_button" type="button" aria-label="Messages"><img
-                        src="/Assests/message_icon.png" alt="Messages"></button>
-                <div class="topbar_profile" id="topbarProfile">SHS</div>
-            </div>
-        </header>
+                        <span id="jobPriceType" class="job_meta_chip">Fixed Price Project</span>
+                    </div>
 
-        <section class="dashboard_hero">
-            <h1 id="greetingTitle">Good morning, Sami</h1>
-            <p id="greetingText">Here's what's happening with your account today.</p>
-        </section>
+                    <div class="job_price_line">
+                        <span class="job_price_type">Project total fixed budget</span>
+                        <span id="jobPrice" class="job_price_value">$1,200-$1,400</span>
+                    </div>
+                </article>
 
-        <section class="stats_row" id="statsRow"></section>
+                <article class="job_flow_card">
+                    <h2 class="job_section_title">Your budget working rate</h2>
+                    <form class="bid_form">
+                        <div class="bid_field">
+                            <label for="bidAmount">Working rate</label>
+                            <input id="bidAmount" type="number" min="0" value="500" />
+                        </div>
 
-        <section class="content_layout">
-            <div class="overview_stack">
-                <div class="overview_cards" id="overviewCards"></div>
-            </div>
+                        <div class="bid_formula">
+                            <div class="bid_formula_line"><span>Project total fixed budget</span><strong id="fixedBudgetLabel">$1,200-$1,400</strong></div>
+                            <div class="bid_formula_line"><span>Your budget working rate</span><strong id="workingRateLabel">$500</strong></div>
+                            <div class="bid_formula_line"><span>Admin commission fee (20%)</span><strong id="commissionAmount">$100</strong></div>
+                            <div class="bid_formula_line"><span>Total amount you'll get</span><strong id="payoutAmount">$400</strong></div>
+                        </div>
 
-            <aside class="payouts_panel">
-                <h2>Payouts method</h2>
-                <div class="payout_list" id="payoutList"></div>
-                <p class="payout_note">Choose a payout method to receive your earned amount without delay. Terms and
-                    Privacy Policy apply.</p>
+                        <div class="bid_field">
+                            <label for="proposalNotes">Add special comments to employer</label>
+                            <textarea id="proposalNotes" placeholder="Tell the employer why you are the right fit for this job."></textarea>
+                        </div>
+
+                        <div id="bidStatusMessage" class="status_message">You've accepted the offer.</div>
+
+                        <div class="action_row">
+                            <button id="submitBidButton" class="primary_action_button" type="submit">Submit bid now</button>
+                            <a class="secondary_action_button" href="/pages/job-description.html">Back to job</a>
+                        </div>
+                    </form>
+                </article>
+            </section>
+
+            <aside class="job_flow_rail">
+                <section class="job_flow_card">
+                    <h2 class="job_section_title">Project requirements</h2>
+                    <div id="projectRequirements" class="project_requirement_list"></div>
+                </section>
+
+                <section id="buyerCard" class="job_flow_card"></section>
             </aside>
-        </section>
-
+        </div>
     </main>
 
     <script src="/scripts/user-session.js"></script>
     <script src="/scripts/sidebar-menu.js"></script>
-    <script src="/scripts/employee-dashboard.js"></script>
+    <script src="/scripts/job-flow.js"></script>
 </body>
 
 </html>

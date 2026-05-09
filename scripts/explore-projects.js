@@ -13,6 +13,7 @@ if (logIn) {
 // Simulated data
 let jobs = [
   {
+    id: "website-design-front-end-development",
     title: "Website Design and Front-End Development",
     description:
       "We are seeking a talented website designer and front-end developer to join our team. In this role, you will be responsible for creating visually appealing and user-friendly websites that align with our brand identity. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in front-end technologies such as HTML, CSS, and JavaScript. You will collaborate closely with our marketing and content teams to ensure that the website effectively communicates our message and engages our target audience.",
@@ -24,6 +25,7 @@ let jobs = [
     isFavorite: true,
   },
   {
+    id: "website-seo-audit-optimization",
     title: "Website SEO Audit and Optimization",
     description:
       "In this role, you will be responsible for conducting comprehensive SEO audits and implementing strategies to optimize websites for search engines. The ideal candidate should have a strong understanding of SEO best practices, keyword research, and on-page optimization techniques. You will analyze website performance, identify areas for improvement, and implement strategies to enhance search engine rankings and drive organic traffic.",
@@ -35,6 +37,7 @@ let jobs = [
     isFavorite: false,
   },
   {
+    id: "visual-branding-collateral-design",
     title: "Visual Branding and Collateral Design",
     description:
       "In this role, you will be responsible for creating visually appealing and cohensive brand identities and collateral materials. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in design tools such as Adobe Creative Suite. You will collaborate closely with our marketing team to ensure that the branding effectively communicates our message and resonates with our target audience.",
@@ -46,6 +49,7 @@ let jobs = [
     isFavorite: false,
   },
   {
+    id: "ecommerce-platform-development",
     title: "E-commerce Platform Development",
     description:
       "We are seeking an experienced developer to build a scalable e-commerce plaform from scratch. You will work closely with our design team. The ideal candidate should have a strong background in web development, with expertise in technologies such as React, Node.js, and MongoDB. You will be responsible for developing a user-friendly and secure e-commerce platform that meets our business requirements and provides an exceptional shopping experience for our customers.",
@@ -57,6 +61,7 @@ let jobs = [
     isFavorite: false,
   },
   {
+    id: "mobile-app-uiux-redesign",
     title: "Mobile App UI/UX Redesign",
     description:
       "Looking for a creative UI/UX designer to revamp our existing mobile application. Your goal will be to improve user relation through intuitive design and seamless user experience. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in design tools such as Figma or Adobe XD. You will collaborate closely with our development team to ensure that the redesigned UI/UX is implemented effectively and enhances the overall user experience of our mobile application.",
@@ -98,7 +103,7 @@ function renderJobs(data) {
       </div>
       <hr>
       <div class="job-bottom"><div class="buyer-info"><img src="../Assests/John Doe Icon.png" alt="Buyer Icon"> <span>${job.buyerName}</span></div>
-      <button class="view-jobs-btn"> View Jobs</button>
+      <button class="view-jobs-btn" type="button" data-job-id="${job.id}"> View Jobs</button>
       </div>
     `;
 
@@ -106,10 +111,28 @@ function renderJobs(data) {
   });
 }
 
-document.querySelectorAll(".favorite-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    this.classList.toggle("active");
-  });
+function openJobDetails(jobId) {
+  const selectedJob = jobs.find((job) => job.id === jobId) || jobs[0];
+
+  if (!selectedJob) {
+    return;
+  }
+
+  sessionStorage.setItem("selectedJob", JSON.stringify(selectedJob));
+  window.location.href = `/pages/job-description.html?job=${encodeURIComponent(selectedJob.id)}`;
+}
+
+document.getElementById("jobContainer").addEventListener("click", (event) => {
+  const favoriteButton = event.target.closest(".favorite-btn");
+  if (favoriteButton) {
+    favoriteButton.classList.toggle("active");
+    return;
+  }
+
+  const viewButton = event.target.closest(".view-jobs-btn");
+  if (viewButton) {
+    openJobDetails(viewButton.getAttribute("data-job-id"));
+  }
 });
 
 // Search function

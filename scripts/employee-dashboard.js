@@ -1,7 +1,8 @@
-console.log(localStorage);
-
-const dashboardName = new URLSearchParams(window.location.search).get('name') || 'Sayed Hasan Sami';
-const lastName = dashboardName.trim().split(' ')[2] || 'Sami';
+const userProfile = window.MFHUserSession ? window.MFHUserSession.getCurrentUser() : {
+    displayName: new URLSearchParams(window.location.search).get('name') || 'Sayed Hasan Sami'
+};
+const dashboardName = userProfile.displayName;
+const lastName = dashboardName.trim().split(' ')[2] || dashboardName.trim().split(' ')[1] || 'Sami';
 
 const dashboardState = {
     stats: [
@@ -42,6 +43,7 @@ const chartFilters = document.getElementById('chartFilters');
 const earningsChart = document.getElementById('earningsChart');
 const sidebarName = document.getElementById('sidebarName');
 const sidebarAvatar = document.getElementById('sidebarAvatar');
+const topbarProfile = document.getElementById('topbarProfile');
 const greetingTitle = document.getElementById('greetingTitle');
 const greetingText = document.getElementById('greetingText');
 
@@ -203,7 +205,7 @@ function setGreeting() {
     }
 
     if (sidebarAvatar) {
-        sidebarAvatar.textContent = dashboardName
+        sidebarAvatar.textContent = window.MFHUserSession ? window.MFHUserSession.getInitials(dashboardName) : dashboardName
             .split(' ')
             .map(function (part) {
                 return part.charAt(0);
@@ -211,6 +213,10 @@ function setGreeting() {
             .join('')
             .slice(0, 3)
             .toUpperCase();
+    }
+
+    if (topbarProfile) {
+        topbarProfile.textContent = window.MFHUserSession ? window.MFHUserSession.getInitials(dashboardName) : 'SHS';
     }
 
     if (greetingTitle) {
@@ -222,31 +228,7 @@ function setGreeting() {
     }
 }
 
-function setupSidebarMenuToggle() {
-    const sidebarGroupButton = document.querySelector('.sidebar_group_button');
-
-    if (!sidebarGroupButton) {
-        return;
-    }
-
-    const sidebarGroup = sidebarGroupButton.closest('.sidebar_group');
-    const sidebarSubmenu = sidebarGroup ? sidebarGroup.querySelector('.sidebar_submenu') : null;
-
-    if (!sidebarGroup || !sidebarSubmenu) {
-        return;
-    }
-
-    sidebarGroupButton.addEventListener('click', function () {
-        const isExpanded = sidebarGroupButton.getAttribute('aria-expanded') === 'true';
-
-        sidebarGroupButton.setAttribute('aria-expanded', String(!isExpanded));
-        sidebarGroup.classList.toggle('is-open', !isExpanded);
-        sidebarSubmenu.hidden = isExpanded;
-    });
-}
-
 setGreeting();
-setupSidebarMenuToggle();
 renderStats();
 renderOverviewCards();
 renderPayouts();
