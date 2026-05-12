@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit profile</title>
+  <link rel="stylesheet" href="/styles/style.css" />
+  <link rel="stylesheet" href="/styles/employee-dashboard.css" />
+  <link rel="stylesheet" href="/styles/user-profile.css" />
+</head>
+
+<body>
+  <main class="profile_settings_page">
+    <section class="profile_settings_panel">
+      <div class="profile_settings_header">
+        <h1>Profile settings</h1>
+      </div>
+
+      <form id="profileForm" class="settings_form">
+        <div class="upload_card">
+          <div class="upload_avatar_wrap">
+            <img id="avatarPreview" class="upload_avatar" alt="Profile preview" />
+          </div>
+          <div class="upload_copy">
+            <h2>Upload profile photo</h2>
+            <p>Profile image should have jpg, jpeg, gif, png extension and size should not be more than 5MB</p>
+            <label class="btn upload_btn" for="fieldAvatarFile">Upload Photo</label>
+            <input type="file" id="fieldAvatarFile" accept="image/*" hidden />
+          </div>
+        </div>
+
+        <div class="two_col_grid">
+          <div class="form_row">
+            <label for="fieldFirstName">First name:</label>
+            <input type="text" id="fieldFirstName" />
+          </div>
+          <div class="form_row">
+            <label for="fieldLastName">Last name:</label>
+            <input type="text" id="fieldLastName" />
+          </div>
+        </div>
+
+        <div class="form_row">
+          <label for="fieldTitle">Your tagline:</label>
+          <input type="text" id="fieldTitle" />
+        </div>
+
+        <div class="form_row">
+          <div class="row_label_line">
+            <label>Description:</label>
+          </div>
+          <div class="editor_shell">
+            <div class="editor_toolbar" aria-hidden="true">
+              <span>Paragraph</span>
+              <span>B</span><span>I</span><span>U</span><span>•</span><span>•</span><span>•</span><span>🔗</span><span>⤢</span>
+            </div>
+            <div id="fieldBio" class="editor_area" contenteditable="true" role="textbox" aria-multiline="true"></div>
+          </div>
+        </div>
+
+        <div class="form_row">
+          <label for="fieldCountry">Country</label>
+          <select id="fieldCountry"></select>
+        </div>
+
+        <div class="two_col_grid">
+          <div class="form_row">
+            <label for="fieldState">State</label>
+            <select id="fieldState"></select>
+          </div>
+          <div class="form_row">
+            <label for="fieldFreelancerType">Freelancer type</label>
+            <select id="fieldFreelancerType"></select>
+          </div>
+        </div>
+
+        <div class="form_row small_select">
+          <label for="fieldEnglishLevel">English level</label>
+          <select id="fieldEnglishLevel"></select>
+        </div>
+
+        <div class="form_row">
+          <label for="fieldSkills">Skills</label>
+          <div class="chips_input_wrap">
+            <input type="text" id="fieldSkills" placeholder="Type a skill and press Enter" />
+            <div id="skillsPreview" class="chips_preview"></div>
+          </div>
+        </div>
+
+        <div class="form_row">
+          <label for="fieldLanguages">Languages, I can speak</label>
+          <div class="chips_input_wrap">
+            <input type="text" id="fieldLanguages" placeholder="Type a language and press Enter" />
+            <div id="languagesPreview" class="chips_preview"></div>
+          </div>
+        </div>
+
+        <div class="form_row short_input">
+          <label for="fieldRate">Hourly rate</label>
+          <input type="number" id="fieldRate" min="0" step="1" />
+        </div>
+
+        <section class="section_block">
+          <div class="section_block_head">
+            <h2>Educational details</h2>
+            <button type="button" class="link_button" id="addEducationBtn">Add new</button>
+          </div>
+          <div id="educationList" class="education_list"></div>
+        </section>
+
+        <div class="form_actions save_bar">
+          <p>Click "Save &amp; Update" to update the latest changes</p>
+          <button type="submit" class="btn primary">Save &amp; Update</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/scripts/user-session.js"></script>
+  <script src="/scripts/utils/api.js"></script>
+  <script src="/scripts/user-profile-settings.js"></script>
+</body>
+
+</html>

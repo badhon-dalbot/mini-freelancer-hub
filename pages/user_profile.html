@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User profile</title>
+  <link rel="stylesheet" href="/styles/style.css" />
+  <link rel="stylesheet" href="/styles/employee-dashboard.css" />
+  <link rel="stylesheet" href="/styles/user-profile.css" />
+</head>
+
+<body>
+  <main class="profile_page">
+    <section class="profile_top_layout">
+      <aside class="profile_sidebar_card">
+        <div class="profile_nameplate">
+          <img id="profileAvatarImage" class="profile_avatar_image" alt="Profile avatar" />
+          <div>
+            <div class="profile_role_text">Creative Web Designer</div>
+            <h1 id="profileName">Ava Anderson</h1>
+            <div class="profile_status">Starting from <strong id="profileRateLabel">$20 /hr</strong></div>
+          </div>
+        </div>
+
+        <div class="profile_rating_row">
+          <span class="star_badge">★ 5.0</span>
+          <span id="profileReviewCount">3 reviews</span>
+          <span id="profileJobCount">8,571 views</span>
+        </div>
+
+        <div class="social_row" id="profileSocialRow"></div>
+
+        <div class="profile_info_list">
+          <div><span>Location</span><strong id="profileLocation">United States (US)</strong></div>
+          <div><span>Freelancer type</span><strong id="profileFreelancerType">Independent</strong></div>
+          <div><span>Languages</span><strong id="profileLanguagesSummary">English, French</strong></div>
+          <div><span>English level</span><strong id="profileEnglishLevel">Conversational</strong></div>
+        </div>
+      </aside>
+
+      <section class="profile_main_card profile_about_panel">
+        <h2>About</h2>
+        <p id="profileBio">Hello, I’m Ava, a passionate web designer based in the United States. I specialize in crafting stunning online experiences that captivate audiences and elevate brands.</p>
+
+        <h3>Skills</h3>
+        <div id="profileSkills" class="skill_list"></div>
+      </section>
+    </section>
+
+    <section class="section_block profile_portfolio_block">
+      <h2>Portfolio</h2>
+      <div id="profilePortfolio" class="portfolio_grid"></div>
+    </section>
+
+    <section class="section_block">
+      <h2>Education</h2>
+      <div id="profileEducation" class="two_card_grid"></div>
+    </section>
+
+    <section class="section_block">
+      <h2>Experience</h2>
+      <div id="profileExperience" class="two_card_grid"></div>
+    </section>
+  </main>
+
+  <script src="/scripts/user-session.js"></script>
+  <script src="/scripts/utils/api.js"></script>
+  <script src="/scripts/user-profile.js"></script>
+</body>
+
+</html>

@@ -14,15 +14,20 @@
             <span></span><span></span><span></span><span></span>
         </a>
 
-        <div class="sidebar_profile">
+        <div class="sidebar_profile" id="profileMenuToggle" style="cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 0 4px;">
             <div class="sidebar_avatar" id="sidebarAvatar">SHS</div>
-            <h2 id="sidebarName">Sayed Hasan Sami</h2>
-            <span class="sidebar_profile_chevron" aria-hidden="true">
+            <h2 id="sidebarName" style="margin: 0; flex: 1;">Sayed Hasan Sami</h2>
+            <span class="sidebar_profile_chevron" aria-hidden="true" id="profileChevron">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="m6 9 6 6 6-6"></path>
                 </svg>
             </span>
+        </div>
+
+        <div class="sidebar_submenu" id="profileSubmenu" hidden>
+            <a class="sidebar_subitem" href="/pages/user_profile.html">View Profile</a>
+            <a class="sidebar_subitem" href="/pages/user_profile_settings.html">Edit Profile</a>
         </div>
 
         <a class="sidebar_create_button" href="/pages/create-gig.html">
@@ -226,6 +231,7 @@
     <script src="/scripts/user-session.js"></script>
     <script src="/scripts/sidebar-menu.js"></script>
     <script src="/scripts/employee-dashboard.js"></script>
+    <script src="/scripts/dashboard-profile-sync.js"></script>
 </body>
 
 </html>
