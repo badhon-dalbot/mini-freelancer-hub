@@ -158,6 +158,7 @@ if (registerForm) {
       lastname: lastNameInput.value.trim(),
       email: emailInput.value.trim().toLowerCase(),
       password: passwordInput.value,
+      role: document.querySelector('input[name="role"]:checked')?.value || "client",
     };
 
     try {
