@@ -49,8 +49,9 @@ async function handleSignIn() {
     if (!response.ok) {
       throw new Error(data.message || "Login failed");
     }
-    if (data.token) {
+    if (data.token && data.user) {
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
       window.location.href = "/pages/employee-dashboard.html";
     } else {
       throw new Error(
@@ -86,13 +87,13 @@ if (signInForm) {
 
     // Validation
     if (!emailInput.value.trim()) {
-      errorMessage.textContent = "Please enter your email";
+      showMessage("Please enter your email", "error");
       emailInput.focus();
       return;
     }
 
     if (!isValidEmail(emailInput.value)) {
-      errorMessage.textContent = "Please enter a valid email address";
+      showMessage("Please enter a valid email address", "error");
       emailInput.focus();
       return;
     }

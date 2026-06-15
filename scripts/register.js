@@ -16,7 +16,7 @@ tabs.forEach((tab) => {
   });
 });
 
-const url = "https://freelancerhubbackend.onrender.com/auth/register";
+const url = "https://freelancerhubbackend.onrender.com/api/register";
 
 // عناصر
 const registerForm = document.getElementById("registerForm");
@@ -176,7 +176,7 @@ if (registerForm) {
       showMessage("Registration successful! Redirecting...", "success");
 
       setTimeout(() => {
-        window.location.href = "/pages/employee-dashboard.html";
+        window.location.href = "/pages/signin.html";
       }, 1200);
     } catch (error) {
       console.error(error);
