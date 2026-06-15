@@ -476,6 +476,14 @@
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("currentUser");
+
+    // Clear fallbacks and transient project state tracking values
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("currentUser");
+    sessionStorage.removeItem("selectedJob");
+    sessionStorage.removeItem("isLoggedIn");
+
     window.location.href = "/pages/signin.html";
   }
 
@@ -618,9 +626,9 @@
     }
 
     // Application Logout Controller Action Target
-    const logoutButton = document.getElementById("logoutButton");
-    if (logoutButton) {
-      logoutButton.addEventListener("click", handleLogout);
+    const logoutButton = document.getElementsByClassName("sidebar_logout");
+    if (logoutButton.length > 0) {
+      logoutButton[0].addEventListener("click", handleLogout);
     }
   }
 
