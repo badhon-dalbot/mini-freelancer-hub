@@ -52,7 +52,11 @@ async function handleSignIn() {
     if (data.token && data.user) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      window.location.href = "/pages/employee-dashboard.html";
+      if (data.user.role === "freelancer") {
+        window.location.href = "/pages/user-dashboard.html";
+      } else {
+        window.location.href = "/pages/employee-dashboard.html";
+      }
     } else {
       throw new Error(
         "Authentication token not received. Login may have succeeded but cannot proceed without token.",
@@ -71,7 +75,11 @@ async function handleSignIn() {
           "info",
         );
         setTimeout(() => {
-          window.location.href = "/pages/employee-dashboard.html";
+          if (data.user.role === "freelancer") {
+            window.location.href = "/pages/user-dashboard.html";
+          } else {
+            window.location.href = "/pages/employee-dashboard.html";
+          }
         }, 1500);
       } else {
         showMessage("No local account found. Please register first.", "error");
