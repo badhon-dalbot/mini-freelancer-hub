@@ -1,4 +1,4 @@
-const BASE_URL = "https://freelancerhubbackend.onrender.com";
+const BASE_URL = "https://freelancerhubbackend.onrender.com/api";
 
 // GET Request
 async function getData(endpoint) {

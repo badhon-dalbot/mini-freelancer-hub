@@ -1,9 +1,10 @@
-const logIn = false;
 const topHeader = document.getElementById("header");
 const sidebar = document.getElementById("sidebar");
 const searchBar = document.getElementById("search-bar");
 
-if (logIn) {
+const login = sessionStorage.getItem("isLoggedIn") === "true";
+console.log("Login status:", login);
+if (login) {
   topHeader.style.display = "none";
 } else {
   sidebar.style.display = "none";
@@ -11,68 +12,73 @@ if (logIn) {
 }
 
 // Simulated data
-let jobs = [
-  {
-    id: "website-design-front-end-development",
-    title: "Website Design and Front-End Development",
-    description:
-      "We are seeking a talented website designer and front-end developer to join our team. In this role, you will be responsible for creating visually appealing and user-friendly websites that align with our brand identity. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in front-end technologies such as HTML, CSS, and JavaScript. You will collaborate closely with our marketing and content teams to ensure that the website effectively communicates our message and engages our target audience.",
-    price: "$1200-$1400",
-    priceType: "Fixed price project",
-    tags: ["App Design", "Content Writing", "SEO"],
-    buyerName: "Mark Thompson",
-    postDate: "January 5, 2024",
-    isFavorite: true,
-  },
-  {
-    id: "website-seo-audit-optimization",
-    title: "Website SEO Audit and Optimization",
-    description:
-      "In this role, you will be responsible for conducting comprehensive SEO audits and implementing strategies to optimize websites for search engines. The ideal candidate should have a strong understanding of SEO best practices, keyword research, and on-page optimization techniques. You will analyze website performance, identify areas for improvement, and implement strategies to enhance search engine rankings and drive organic traffic.",
-    price: "$1000-$1200",
-    priceType: "Fixed price project",
-    tags: ["SEO", "Marketing"],
-    buyerName: "Jessica Carter",
-    postDate: "February 10, 2024",
-    isFavorite: false,
-  },
-  {
-    id: "visual-branding-collateral-design",
-    title: "Visual Branding and Collateral Design",
-    description:
-      "In this role, you will be responsible for creating visually appealing and cohensive brand identities and collateral materials. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in design tools such as Adobe Creative Suite. You will collaborate closely with our marketing team to ensure that the branding effectively communicates our message and resonates with our target audience.",
-    price: "$2400",
-    priceType: "Fixed price project",
-    tags: ["Design", "Branding"],
-    buyerName: "Daniel Gracia",
-    postDate: "March 15, 2024",
-    isFavorite: false,
-  },
-  {
-    id: "ecommerce-platform-development",
-    title: "E-commerce Platform Development",
-    description:
-      "We are seeking an experienced developer to build a scalable e-commerce plaform from scratch. You will work closely with our design team. The ideal candidate should have a strong background in web development, with expertise in technologies such as React, Node.js, and MongoDB. You will be responsible for developing a user-friendly and secure e-commerce platform that meets our business requirements and provides an exceptional shopping experience for our customers.",
-    price: "$3000-$4500",
-    priceType: "Fixed price project",
-    tags: ["React", "Node.js"],
-    buyerName: "Sarah Jenkins",
-    postDate: "April 20, 2024",
-    isFavorite: false,
-  },
-  {
-    id: "mobile-app-uiux-redesign",
-    title: "Mobile App UI/UX Redesign",
-    description:
-      "Looking for a creative UI/UX designer to revamp our existing mobile application. Your goal will be to improve user relation through intuitive design and seamless user experience. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in design tools such as Figma or Adobe XD. You will collaborate closely with our development team to ensure that the redesigned UI/UX is implemented effectively and enhances the overall user experience of our mobile application.",
-    price: "$65/hr",
-    priceType: "Hourly/price project",
-    tags: ["UI Design", "Figma"],
-    buyerName: "Alex Rivera",
-    postDate: "May 5, 2024",
-    isFavorite: false,
-  },
-];
+// let jobs = [
+//   {
+//     id: "website-design-front-end-development",
+//     title: "Website Design and Front-End Development",
+//     description:
+//       "We are seeking a talented website designer and front-end developer to join our team. In this role, you will be responsible for creating visually appealing and user-friendly websites that align with our brand identity. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in front-end technologies such as HTML, CSS, and JavaScript. You will collaborate closely with our marketing and content teams to ensure that the website effectively communicates our message and engages our target audience.",
+//     price: "$1200-$1400",
+//     priceType: "Fixed price project",
+//     tags: ["App Design", "Content Writing", "SEO"],
+//     buyerName: "Mark Thompson",
+//     postDate: "January 5, 2024",
+//     isFavorite: true,
+//   },
+//   {
+//     id: "website-seo-audit-optimization",
+//     title: "Website SEO Audit and Optimization",
+//     description:
+//       "In this role, you will be responsible for conducting comprehensive SEO audits and implementing strategies to optimize websites for search engines. The ideal candidate should have a strong understanding of SEO best practices, keyword research, and on-page optimization techniques. You will analyze website performance, identify areas for improvement, and implement strategies to enhance search engine rankings and drive organic traffic.",
+//     price: "$1000-$1200",
+//     priceType: "Fixed price project",
+//     tags: ["SEO", "Marketing"],
+//     buyerName: "Jessica Carter",
+//     postDate: "February 10, 2024",
+//     isFavorite: false,
+//   },
+//   {
+//     id: "visual-branding-collateral-design",
+//     title: "Visual Branding and Collateral Design",
+//     description:
+//       "In this role, you will be responsible for creating visually appealing and cohensive brand identities and collateral materials. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in design tools such as Adobe Creative Suite. You will collaborate closely with our marketing team to ensure that the branding effectively communicates our message and resonates with our target audience.",
+//     price: "$2400",
+//     priceType: "Fixed price project",
+//     tags: ["Design", "Branding"],
+//     buyerName: "Daniel Gracia",
+//     postDate: "March 15, 2024",
+//     isFavorite: false,
+//   },
+//   {
+//     id: "ecommerce-platform-development",
+//     title: "E-commerce Platform Development",
+//     description:
+//       "We are seeking an experienced developer to build a scalable e-commerce plaform from scratch. You will work closely with our design team. The ideal candidate should have a strong background in web development, with expertise in technologies such as React, Node.js, and MongoDB. You will be responsible for developing a user-friendly and secure e-commerce platform that meets our business requirements and provides an exceptional shopping experience for our customers.",
+//     price: "$3000-$4500",
+//     priceType: "Fixed price project",
+//     tags: ["React", "Node.js"],
+//     buyerName: "Sarah Jenkins",
+//     postDate: "April 20, 2024",
+//     isFavorite: false,
+//   },
+//   {
+//     id: "mobile-app-uiux-redesign",
+//     title: "Mobile App UI/UX Redesign",
+//     description:
+//       "Looking for a creative UI/UX designer to revamp our existing mobile application. Your goal will be to improve user relation through intuitive design and seamless user experience. The ideal candidate should have a strong portfolio showcasing their design skills and proficiency in design tools such as Figma or Adobe XD. You will collaborate closely with our development team to ensure that the redesigned UI/UX is implemented effectively and enhances the overall user experience of our mobile application.",
+//     price: "$65/hr",
+//     priceType: "Hourly/price project",
+//     tags: ["UI Design", "Figma"],
+//     buyerName: "Alex Rivera",
+//     postDate: "May 5, 2024",
+//     isFavorite: false,
+//   },
+// ];
+
+getData("/projects").then((data) => {
+  jobs = data;
+  renderJobs(jobs);
+});
 
 // Render jobs
 function renderJobs(data) {
@@ -99,7 +105,7 @@ function renderJobs(data) {
       <div class="job-title">${job.title}</div>
       <div class="job-price"><span>${job.priceType}</span><span>${job.price}</span></div>
       <div class="tags">
-        ${job.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+        ${job?.tags?.map((tag) => `<span class="tag">${tag}</span>`).join("")}
       </div>
       <hr>
       <div class="job-bottom"><div class="buyer-info"><img src="../Assests/John Doe Icon.png" alt="Buyer Icon"> <span>${job.buyerName}</span></div>
@@ -147,4 +153,7 @@ function searchJobs() {
 }
 
 // Initial load
-renderJobs(jobs);
+getData("/projects").then((data) => {
+  jobs = data;
+  renderJobs(jobs);
+});
