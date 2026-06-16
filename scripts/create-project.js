@@ -644,7 +644,9 @@
         price_type: selectedPriceType,
         min_price: minRaw ? Number(minRaw) : null,
         max_price: maxRaw ? Number(maxRaw) : null,
-        category_id: (categorySelect && categorySelect.value) ? categorySelect.value : null,
+        category_id: (categorySelect && categorySelect.value && categorySelect.value !== "Choose category") 
+    ? Number(categorySelect.value) 
+    : null,
         job_type: (locationSelect && locationSelect.value) ? locationSelect.value.toLowerCase() : "remote",
         experience_level: "entry",
         status: "open",
