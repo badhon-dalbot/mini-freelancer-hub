@@ -11,7 +11,6 @@
 
 <body class="dashboard_page create_project_page">
     <aside class="dashboard_sidebar">
-
         <div class="sidebar_profile">
             <div class="sidebar_avatar" id="sidebarAvatar">SHS</div>
             <div>
@@ -41,9 +40,8 @@
         <div class="sidebar_footer">
             <div class="sidebar_balance">
                 <span>Account balance:</span>
-                <strong>$1,080</strong>
+                <strong>$00</strong>
             </div>
-
             <a class="sidebar_logout" href="/index.html">Logout</a>
         </div>
     </aside>
@@ -63,7 +61,7 @@
                 <button class="topbar_icon_button" type="button" aria-label="Messages">
                     <img src="/Assests/message_icon.png" alt="Messages">
                 </button>
-                <div class="topbar_profile">SHS</div>
+                <div class="topbar_profile" id="topbarProfile">SHS</div>
             </div>
         </header>
 
@@ -100,7 +98,7 @@
                     <p>Add your project details, budget, and requirements so freelancers can understand the work quickly.</p>
                 </div>
 
-                <form class="create_project_form">
+                <form class="create_project_form" method="post">
                     <div class="form_field form_field_full">
                         <label for="projectTitle">Add your project title</label>
                         <input id="projectTitle" type="text" placeholder="Enter your project title">
@@ -159,20 +157,20 @@
                         <div class="form_field">
                             <label for="duration">Project duration</label>
                             <select id="duration">
-                                <option>Choose duration</option>
-                                <option>1 week</option>
-                                <option>2 weeks</option>
-                                <option>1 month</option>
+                                <option value="">Choose duration</option>
+                                <option value="1_week">1 week</option>
+                                <option value="2_weeks">2 weeks</option>
+                                <option value="1_month">1 month</option>
                             </select>
                         </div>
                         <div class="form_field">
                             <label for="category">Project category</label>
                             <select id="category">
-                                <option>Choose category</option>
-                                <option>Web Development</option>
-                                <option>UI/UX Design</option>
-                                <option>Marketing</option>
-                                <option>Writing</option>
+                                <option value="">Choose category</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="UI/UX Design">UI/UX Design</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Writing">Writing</option>
                             </select>
                         </div>
                     </div>
@@ -180,10 +178,10 @@
                     <div class="form_field form_field_full">
                         <label for="location">Add location</label>
                         <select id="location">
-                            <option>Select location</option>
-                            <option>Remote</option>
-                            <option>On site</option>
-                            <option>Hybrid</option>
+                            <option value="">Select location</option>
+                            <option value="remote">Remote</option>
+                            <option value="on site">On site</option>
+                            <option value="hybrid">Hybrid</option>
                         </select>
                     </div>
 
@@ -211,6 +209,10 @@
             </section>
         </section>
     </main>
+
+    <script src="../scripts/user-session.js"></script>
+    <script src="../scripts/utils/api.js"></script>
+    <script src="../scripts/create-project.js"></script>
 </body>
 
 </html>

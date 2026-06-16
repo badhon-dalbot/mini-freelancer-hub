@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages | FreelancerHub</title>
+  <link rel="stylesheet" href="/styles/message.css">
+</head>
+
+<body class="message_page">
+  <header class="header">
+    <!-- Logo -->
+    <div class="logo_image">
+      <img src="/Assests/logo.png" alt="Logo" />
+    </div>
+    <div class="logo">Mini Freelancer Hub</div>
+
+    <!-- Left navigation -->
+    <nav class="nav_left">
+      <a href="/pages/user-dashboard.html" class="dropdown-link">Dashboard</a>
+      <a href="/pages/projects.html" class="dropdown-link">Projects</a>
+      <a href="/pages/messages.html" class="dropdown-link active">Messages</a>
+    </nav>
+
+    <!-- Right navigation -->
+    <div class="nav_right">
+      <!-- Search bar for users/messages -->
+      <input type="text" placeholder="Search conversations..." />
+
+      <!-- Dropdown for filtering conversations -->
+      <select class="conversations-dropdown">
+        <option>All Conversations</option>
+        <option>Unread</option>
+        <option>Starred</option>
+        <option>Archived</option>
+      </select>
+
+    </div>
+  </header>
+
+  <div id="chatApp">
+    <div id="sidebar">
+      <h3>Users</h3>
+      <ul id="userList"></ul>
+    </div>
+
+    <div id="chatArea">
+      <div id="messages"></div>
+      <div id="chatbox">
+        <input id="messageInput" type="text" placeholder="Type a message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="/scripts/user-session.js"></script>
+  <script src="/scripts/message.js"></script>
+</body>
+
+</html>
