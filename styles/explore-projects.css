@@ -122,6 +122,20 @@ body {
   gap: 20px;
 }
 
+.projects-state {
+  grid-column: 1 / -1;
+  padding: 24px;
+  border-radius: 15px;
+  background: #fff;
+  color: #475569;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.projects-state--error {
+  color: #b42318;
+}
+
 /* Card */
 .job-card {
   background: #fff;
