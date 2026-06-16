@@ -1,57 +1,57 @@
 (function () {
-  const defaultJobCatalog = {
-    "website-design-front-end-development": {
-      title: "Website Design and Front-End Development",
-      price: "$1,200-$1,400",
-      priceType: "Fixed Price Project",
-      postDate: "2 years ago",
-      location: "Remote",
-      description:
-        "We are seeking a talented Website Designer and Front-End Developer to join our team. In this role, you will be responsible for creating visually appealing and user-friendly websites that meet our clients' needs. You will work closely with our design and development teams to ensure the final product is both functional and aesthetically pleasing.",
-      responsibilities: [
-        "Designing and developing responsive websites",
-        "Collaborating with the design team to create stunning visual designs",
-        "Ensuring the technical feasibility of UI/UX designs",
-        "Optimizing websites for maximum speed and scalability",
-        "Implementing best practices in front-end development",
-        "Staying up-to-date with the latest web design and development trends",
-      ],
-      requirements: [
-        "Proven experience as a website designer and front-end developer",
-        "Proficiency in HTML, CSS, and JavaScript",
-        "Experience with responsive and mobile design",
-        "Knowledge of SEO principles",
-        "Excellent communication skills",
-        "Strong attention to detail",
-        "Ability to work in a fast-paced environment",
-        "Team player with a positive attitude",
-      ],
-      skills: [
-        "App Design",
-        "Content Writing",
-        "Illustration",
-        "Logo Design",
-        "Marketing",
-        "Programming",
-        "SEO",
-      ],
-      hiringCapacity: "2 freelancers",
-      expertise: "Senior level",
-      languages: "English",
-      duration: "1 to 3 months",
-      buyer: {
-        name: "Mark Thompson",
-        memberSince: "April 30, 2024",
-        title:
-          "Elevate Your Online Presence with Freelance Website Development",
-        description:
-          "I am a business owner seeking talented freelancers to build a professional website that enhances our online presence and drives business growth.",
-        location: "United States (US)",
-        totalProjects: 1,
-        ongoingProjects: 0,
-      },
-    },
-  };
+  // const defaultJobCatalog = {
+  //   "website-design-front-end-development": {
+  //     title: "Website Design and Front-End Development",
+  //     price: "$1,200-$1,400",
+  //     priceType: "Fixed Price Project",
+  //     postDate: "2 years ago",
+  //     location: "Remote",
+  //     description:
+  //       "We are seeking a talented Website Designer and Front-End Developer to join our team. In this role, you will be responsible for creating visually appealing and user-friendly websites that meet our clients' needs. You will work closely with our design and development teams to ensure the final product is both functional and aesthetically pleasing.",
+  //     responsibilities: [
+  //       "Designing and developing responsive websites",
+  //       "Collaborating with the design team to create stunning visual designs",
+  //       "Ensuring the technical feasibility of UI/UX designs",
+  //       "Optimizing websites for maximum speed and scalability",
+  //       "Implementing best practices in front-end development",
+  //       "Staying up-to-date with the latest web design and development trends",
+  //     ],
+  //     requirements: [
+  //       "Proven experience as a website designer and front-end developer",
+  //       "Proficiency in HTML, CSS, and JavaScript",
+  //       "Experience with responsive and mobile design",
+  //       "Knowledge of SEO principles",
+  //       "Excellent communication skills",
+  //       "Strong attention to detail",
+  //       "Ability to work in a fast-paced environment",
+  //       "Team player with a positive attitude",
+  //     ],
+  //     skills: [
+  //       "App Design",
+  //       "Content Writing",
+  //       "Illustration",
+  //       "Logo Design",
+  //       "Marketing",
+  //       "Programming",
+  //       "SEO",
+  //     ],
+  //     hiringCapacity: "2 freelancers",
+  //     expertise: "Senior level",
+  //     languages: "English",
+  //     duration: "1 to 3 months",
+  //     buyer: {
+  //       name: "Mark Thompson",
+  //       memberSince: "April 30, 2024",
+  //       title:
+  //         "Elevate Your Online Presence with Freelance Website Development",
+  //       description:
+  //         "I am a business owner seeking talented freelancers to build a professional website that enhances our online presence and drives business growth.",
+  //       location: "United States (US)",
+  //       totalProjects: 1,
+  //       ongoingProjects: 0,
+  //     },
+  //   },
+  // };
 
   function buildGenericJobDetails(job) {
     const title = job.title || "Project";
@@ -230,6 +230,7 @@
     }
 
     if (buyerCard) {
+      console.log(job);
       buyerCard.innerHTML = `
         <div class="buyer_heading">
           <div>
