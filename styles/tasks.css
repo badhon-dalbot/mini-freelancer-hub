@@ -1,98 +1,238 @@
-/* ========== GENERAL STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f5f6f8;
+    background: #f5f7fb;
+    color: #0f1724;
 }
 
-/* ========== STAR RATING ========== */
-.star-rating {
-    color: #fbbf24;
-    font-size: 12px;
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* ========== VERIFIED BADGE ========== */
-.verified-badge {
-    color: #22c55e;
-    font-size: 11px;
+h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #0f1724;
 }
 
-/* ========== DETAILS / ACCORDION STYLES ========== */
-details>summary {
-    list-style: none;
-    cursor: pointer;
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
 }
 
-details>summary::-webkit-details-marker {
-    display: none;
+.card h2 {
+    margin-bottom: 20px;
+    color: #0f1724;
 }
 
-details>summary .icon-plus {
-    display: inline;
+/* ==========================
+   FORM
+========================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
 }
 
-details>summary .icon-minus {
-    display: none;
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #334155;
 }
 
-details[open]>summary .icon-plus {
-    display: none;
+.row {
+    display: flex;
+    gap: 20px;
 }
 
-details[open]>summary .icon-minus {
-    display: inline;
+.row .form-group {
+    flex: 1;
 }
 
-/* ========== HEART BUTTON ANIMATION ========== */
-.heart-btn {
-    transition: all 0.3s ease;
-    cursor: pointer;
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d7dce3;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #fff;
+    outline: none;
+    transition: .25s;
 }
 
-.heart-btn:hover {
-    background-color: #fff !important;
-    transform: scale(1.1);
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, .15);
 }
 
-.heart-btn.liked i {
-    color: #ef4444 !important;
+textarea {
+    resize: vertical;
 }
 
-.heart-btn.liked i::before {
-    content: '\f004';
-    /* solid heart */
-}
+/* ==========================
+   BUTTONS
+========================== */
 
-/* ========== BUTTON STYLES ========== */
 button {
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-/* ========== LINKS STYLES ========== */
-a {
+    padding: 12px 22px;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .25s;
 }
 
-/* ========== IMAGE ERROR HANDLING ========== */
-img {
-    background-color: #f3f4f6;
-    display: block;
+button:hover {
+    background: #16a34a;
 }
 
-/* ========== RESPONSIVE ADJUSTMENTS ========== */
-@media (max-width: 1024px) {
-    .star-rating {
-        flex-wrap: wrap;
-    }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
+
+/* ==========================
+   TABLE
+========================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+thead {
+    background: #f8fafc;
+}
+
+th {
+    padding: 16px;
+    text-align: left;
+    color: #475569;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid #edf2f7;
+    color: #334155;
+}
+
+tbody tr:hover {
+    background: #f9fbfc;
+}
+
+.empty {
+    text-align: center;
+    color: #94a3b8;
+    padding: 40px;
+}
+
+/* ==========================
+   STATUS
+========================== */
+
+.status-active {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #e6f7ee;
+    color: #16a34a;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-completed {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #eef2ff;
+    color: #2563eb;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-pending {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #fff8e6;
+    color: #ca8a04;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ==========================
+   ALERTS
+========================== */
+
+#message {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.success {
+    padding: 14px 18px;
+    background: #e6f7ee;
+    color: #16a34a;
+    border-left: 4px solid #22c55e;
+    border-radius: 8px;
+}
+
+.error {
+    padding: 14px 18px;
+    background: #fdecec;
+    color: #dc2626;
+    border-left: 4px solid #dc2626;
+    border-radius: 8px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
 
 @media (max-width: 768px) {
-    .star-rating span {
-        display: none;
+
+    .row {
+        flex-direction: column;
+        gap: 0;
     }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
 }
