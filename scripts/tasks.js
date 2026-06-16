@@ -1,8 +1,5 @@
 const API_BASE_URL = "https://freelancerhubbackend.onrender.com";
 
-// ==========================
-// AUTH
-// ==========================
 const token = localStorage.getItem("token");
 const user = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -11,17 +8,11 @@ if (!token) {
     window.location.href = "/pages/signin.html";
 }
 
-// ==========================
-// DOM
-// ==========================
 const taskForm = document.getElementById("taskForm");
 const taskList = document.getElementById("taskList");
 const refreshBtn = document.getElementById("refreshBtn");
 const message = document.getElementById("message");
 
-// ==========================
-// MESSAGE
-// ==========================
 function showMessage(text, type = "success") {
 
     message.innerHTML = text;
@@ -33,13 +24,9 @@ function showMessage(text, type = "success") {
     }, 3000);
 }
 
-// ==========================
-// CREATE TASK
-// ==========================
 async function createTask(e) {
 
     e.preventDefault();
-
     const body = {
         freelancer_id: document.getElementById("freelancer_id").value.trim(),
         title: document.getElementById("title").value.trim(),
@@ -49,19 +36,15 @@ async function createTask(e) {
     };
 
     try {
-
         const response = await fetch(`${API_BASE_URL}/api/tasks`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-
             body: JSON.stringify(body)
         });
-
         const data = await response.json();
-
         console.log(data);
 
         if (!response.ok) {
@@ -69,25 +52,17 @@ async function createTask(e) {
         }
 
         showMessage(data.message, "success");
-
         taskForm.reset();
 
         loadTasks();
-
     } catch (err) {
 
         console.error(err);
         showMessage(err.message, "error");
-
     }
-
 }
 
-// ==========================
-// LOAD TASKS
-// ==========================
 async function loadTasks() {
-
     taskList.innerHTML = `
         <tr>
             <td colspan="4">Loading...</td>
@@ -95,7 +70,6 @@ async function loadTasks() {
     `;
 
     try {
-
         const response = await fetch(`${API_BASE_URL}/api/tasks`, {
             method: "GET",
             headers: {
@@ -106,11 +80,9 @@ async function loadTasks() {
         const data = await response.json();
 
         console.log(data);
-
         if (!response.ok) {
             throw new Error(data.message || "Unable to load tasks");
         }
-
         taskList.innerHTML = "";
 
         if (data.length === 0) {
@@ -120,12 +92,10 @@ async function loadTasks() {
                     <td colspan="4">No Tasks Found</td>
                 </tr>
             `;
-
             return;
         }
 
         data.forEach(task => {
-
             taskList.innerHTML += `
                 <tr>
                     <td>${task.title}</td>
@@ -134,13 +104,10 @@ async function loadTasks() {
                     <td>${task.freelancer_id}</td>
                 </tr>
             `;
-
         });
 
     } catch (err) {
-
         console.error(err);
-
         taskList.innerHTML = `
             <tr>
                 <td colspan="4">Failed to load tasks.</td>
@@ -148,19 +115,10 @@ async function loadTasks() {
         `;
 
         showMessage(err.message, "error");
-
     }
-
 }
 
-// ==========================
-// EVENTS
-// ==========================
 taskForm.addEventListener("submit", createTask);
-
 refreshBtn.addEventListener("click", loadTasks);
 
-// ==========================
-// INITIAL LOAD
-// ==========================
 loadTasks();
