@@ -112,7 +112,6 @@ if (signInForm) {
       passwordInput.focus();
       return;
     }
-
     // if (passwordInput.value.length < 6) {
     //   showMessage("Password must be at least 6 characters", "error");
     //   passwordInput.focus();
