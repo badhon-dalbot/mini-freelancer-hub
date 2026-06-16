@@ -12,12 +12,13 @@
     <aside class="dashboard_sidebar">
 
         <div class="sidebar_profile">
-            <div class="sidebar_avatar" id="sidebarAvatar">SHS</div>
+            <img class="sidebar_avatar" id="sidebarAvatar" src="" alt="User Avatar">
             <div>
                 <h2 id="sidebarName">Sayed Hasan Sami</h2>
                 <p class="sidebar_status"><span></span>Active</p>
             </div>
         </div>
+
 
         <a class="sidebar_create_button" href="/pages/create-project.html">Create a project</a>
 
@@ -55,10 +56,17 @@
             </div>
 
             <div class="dashboard_actions">
-                <button class="topbar_icon_button" type="button" aria-label="Notifications"><img src="/Assests/notification_icon.png" alt="Notifications"><span>3</span></button>
-                <button class="topbar_icon_button" type="button" aria-label="Messages"><img src="/Assests/message_icon.png" alt="Messages"></button>
-                <div class="topbar_profile">SHS</div>
+                <button class="topbar_icon_button" type="button" aria-label="Notifications">
+                    <img src="/Assests/notification_icon.png" alt="Notifications"><span>3</span>
+                </button>
+                <button class="topbar_icon_button" type="button" aria-label="Messages">
+                    <img src="/Assests/message_icon.png" alt="Messages">
+                </button>
+                <!-- Avatar image instead of text -->
+                <img class="topbar_profile" id="topbarProfile" src="" alt="User Avatar">
             </div>
+
+
         </header>
 
         <section class="stats_row" id="statsRow"></section>
