@@ -1,57 +1,6 @@
+
 (function () {
-  // const defaultJobCatalog = {
-  //   "website-design-front-end-development": {
-  //     title: "Website Design and Front-End Development",
-  //     price: "$1,200-$1,400",
-  //     priceType: "Fixed Price Project",
-  //     postDate: "2 years ago",
-  //     location: "Remote",
-  //     description:
-  //       "We are seeking a talented Website Designer and Front-End Developer to join our team. In this role, you will be responsible for creating visually appealing and user-friendly websites that meet our clients' needs. You will work closely with our design and development teams to ensure the final product is both functional and aesthetically pleasing.",
-  //     responsibilities: [
-  //       "Designing and developing responsive websites",
-  //       "Collaborating with the design team to create stunning visual designs",
-  //       "Ensuring the technical feasibility of UI/UX designs",
-  //       "Optimizing websites for maximum speed and scalability",
-  //       "Implementing best practices in front-end development",
-  //       "Staying up-to-date with the latest web design and development trends",
-  //     ],
-  //     requirements: [
-  //       "Proven experience as a website designer and front-end developer",
-  //       "Proficiency in HTML, CSS, and JavaScript",
-  //       "Experience with responsive and mobile design",
-  //       "Knowledge of SEO principles",
-  //       "Excellent communication skills",
-  //       "Strong attention to detail",
-  //       "Ability to work in a fast-paced environment",
-  //       "Team player with a positive attitude",
-  //     ],
-  //     skills: [
-  //       "App Design",
-  //       "Content Writing",
-  //       "Illustration",
-  //       "Logo Design",
-  //       "Marketing",
-  //       "Programming",
-  //       "SEO",
-  //     ],
-  //     hiringCapacity: "2 freelancers",
-  //     expertise: "Senior level",
-  //     languages: "English",
-  //     duration: "1 to 3 months",
-  //     buyer: {
-  //       name: "Mark Thompson",
-  //       memberSince: "April 30, 2024",
-  //       title:
-  //         "Elevate Your Online Presence with Freelance Website Development",
-  //       description:
-  //         "I am a business owner seeking talented freelancers to build a professional website that enhances our online presence and drives business growth.",
-  //       location: "United States (US)",
-  //       totalProjects: 1,
-  //       ongoingProjects: 0,
-  //     },
-  //   },
-  // };
+  // REMOVED: defaultJobCatalog configuration block extracted cleanly.
 
   function buildGenericJobDetails(job) {
     const title = job.title || "Project";
@@ -61,6 +10,7 @@
         : ["Communication", "Problem Solving"];
 
     return {
+      id: job.id || job._id || "",
       title: title,
       price: job.price || "$0",
       priceType: job.priceType || "Fixed Price Project",
@@ -69,70 +19,47 @@
       description:
         job.description ||
         `We are looking for a reliable professional to handle ${title.toLowerCase()}. The right freelancer should communicate clearly, stay organized, and deliver polished results on time.`,
-      responsibilities: [
+      responsibilities: job.responsibilities || [
         `Plan and execute the work for ${title.toLowerCase()}`,
         "Collaborate with the buyer to refine the brief and expectations",
         "Deliver work that is clean, accurate, and ready for review",
         "Keep communication consistent through the project timeline",
       ],
-      requirements: [
+      requirements: job.requirements || [
         `Experience with ${tagList[0].toLowerCase()}`,
         "Strong written communication skills",
         "Ability to meet deadlines and follow instructions",
         "Attention to detail and a problem-solving mindset",
       ],
-      skills: tagList
+      skills: job.skills || tagList
         .concat(["Communication", "Attention to detail"])
         .slice(0, 7),
-      hiringCapacity: "2 freelancers",
-      expertise: "Senior level",
-      languages: "English",
-      duration: "1 to 3 months",
+      hiringCapacity: job.hiringCapacity || "2 freelancers",
+      expertise: job.expertise || "Senior level",
+      languages: job.languages || "English",
+      duration: job.duration || "1 to 3 months",
       buyer: {
-        name: job.buyerName || "Project Buyer",
-        memberSince: "April 30, 2024",
-        title: title,
+        name: job.buyerName || (job.buyer && job.buyer.name) || "Project Buyer",
+        memberSince: (job.buyer && job.buyer.memberSince) || "April 30, 2024",
+        title: (job.buyer && job.buyer.title) || title,
         description:
+          (job.buyer && job.buyer.description) ||
           "Looking for a dependable freelancer who can communicate clearly, follow the brief, and deliver work that feels professional from the first draft.",
-        location: "United States (US)",
-        totalProjects: 1,
-        ongoingProjects: 0,
+        location: (job.buyer && job.buyer.location) || "United States (US)",
+        totalProjects: (job.buyer && job.buyer.totalProjects) || 1,
+        ongoingProjects: (job.buyer && job.buyer.ongoingProjects) || 0,
       },
     };
   }
 
-  function getSelectedJob() {
-    const queryJobId = new URLSearchParams(window.location.search).get("job");
-    const storedJob = sessionStorage.getItem("selectedJob");
-
-    if (storedJob) {
-      try {
-        const parsedJob = JSON.parse(storedJob);
-
-        if (parsedJob && parsedJob.id) {
-          return parsedJob;
-        }
-      } catch {
-        // Ignore malformed session data and fall back to the catalog.
-      }
-    }
-
-    return {
-      id: queryJobId || "website-design-front-end-development",
-      title: "Website Design and Front-End Development",
-    };
-  }
-
   function resolveJobData(job) {
-    const catalogJob = defaultJobCatalog[job.id] || {};
     const genericJob = buildGenericJobDetails(job);
 
     return {
       ...genericJob,
-      ...catalogJob,
       ...job,
       buyer: {
-        ...catalogJob.buyer,
+        ...genericJob.buyer,
         ...(job.buyer || {}),
       },
     };
@@ -172,44 +99,34 @@
     const jobPrice = document.getElementById("jobPrice");
     const jobPriceType = document.getElementById("jobPriceType");
     const jobDescription = document.getElementById("jobDescription");
-    const responsibilitiesList = document.getElementById(
-      "responsibilitiesList",
-    );
+    const responsibilitiesList = document.getElementById("responsibilitiesList");
     const requirementsList = document.getElementById("requirementsList");
     const skillsList = document.getElementById("skillsList");
     const proposalButton = document.getElementById("proposalButton");
     const projectRequirements = document.getElementById("projectRequirements");
     const buyerCard = document.getElementById("buyerCard");
-    const bidForm = document.querySelector(".bid_form");
 
     if (jobTitle) jobTitle.textContent = job.title;
-    if (jobMeta)
-      jobMeta.textContent = `Posted ${job.postDate} · ${job.location}`;
+    if (jobMeta) jobMeta.textContent = `Posted ${job.postDate} · ${job.location}`;
     if (jobPrice) jobPrice.textContent = job.price;
     if (jobPriceType) jobPriceType.textContent = job.priceType;
     if (jobDescription) jobDescription.textContent = job.description;
 
-    if (responsibilitiesList) {
+    if (responsibilitiesList && job.responsibilities) {
       responsibilitiesList.innerHTML = job.responsibilities
-        .map(function (item) {
-          return `<li>${item}</li>`;
-        })
+        .map(item => `<li>${item}</li>`)
         .join("");
     }
 
-    if (requirementsList) {
+    if (requirementsList && job.requirements) {
       requirementsList.innerHTML = job.requirements
-        .map(function (item) {
-          return `<li>${item}</li>`;
-        })
+        .map(item => `<li>${item}</li>`)
         .join("");
     }
 
-    if (skillsList) {
+    if (skillsList && job.skills) {
       skillsList.innerHTML = job.skills
-        .map(function (skill) {
-          return `<span class="skill_chip">${skill}</span>`;
-        })
+        .map(skill => `<span class="skill_chip">${skill}</span>`)
         .join("");
     }
 
@@ -230,7 +147,6 @@
     }
 
     if (buyerCard) {
-      console.log(job);
       buyerCard.innerHTML = `
         <div class="buyer_heading">
           <div>
@@ -251,99 +167,12 @@
     }
   }
 
-  // function renderBidPage(job) {
-  //   const jobTitle = document.getElementById('jobTitle');
-  //   const jobMeta = document.getElementById('jobMeta');
-  //   const jobPrice = document.getElementById('jobPrice');
-  //   const jobPriceType = document.getElementById('jobPriceType');
-  //   const projectRequirements = document.getElementById('projectRequirements');
-  //   const buyerCard = document.getElementById('buyerCard');
-  //   const bidAmount = document.getElementById('bidAmount');
-  //   const commissionAmount = document.getElementById('commissionAmount');
-  //   const payoutAmount = document.getElementById('payoutAmount');
-  //   const proposalNotes = document.getElementById('proposalNotes');
-  //   const submitButton = document.getElementById('submitBidButton');
-  //   const statusMessage = document.getElementById('bidStatusMessage');
-
-  //   if (jobTitle) jobTitle.textContent = job.title;
-  //   if (jobMeta) jobMeta.textContent = `Posted ${job.postDate} · ${job.location}`;
-  //   if (jobPrice) jobPrice.textContent = job.price;
-  //   if (jobPriceType) jobPriceType.textContent = job.priceType;
-
-  //   if (projectRequirements) {
-  //     projectRequirements.innerHTML = `
-  //       <div class="requirement_item"><span>Hiring capacity</span><strong>${job.hiringCapacity}</strong></div>
-  //       <div class="requirement_item"><span>Expertise</span><strong>${job.expertise}</strong></div>
-  //       <div class="requirement_item"><span>Languages</span><strong>${job.languages}</strong></div>
-  //       <div class="requirement_item"><span>Project duration</span><strong>${job.duration}</strong></div>
-  //     `;
-  //   }
-
-  //   if (buyerCard) {
-  //     buyerCard.innerHTML = `
-  //       <div class="buyer_heading">
-  //         <div>
-  //           <h3>${job.buyer.name}</h3>
-  //           <p>Member since ${job.buyer.memberSince}</p>
-  //         </div>
-  //         <span class="buyer_verified" aria-label="Verified buyer">✓</span>
-  //       </div>
-  //       <h4>${job.buyer.title}</h4>
-  //       <p class="buyer_description">${job.buyer.description}</p>
-  //       <div class="buyer_stats">
-  //         <div><span>Located in</span><strong>${job.buyer.location}</strong></div>
-  //         <div><span>Total posted projects</span><strong>${job.buyer.totalProjects}</strong></div>
-  //         <div><span>Ongoing projects</span><strong>${job.buyer.ongoingProjects}</strong></div>
-  //       </div>
-  //       <a class="buyer_button" href="/pages/explore-projects.html">See all posted projects →</a>
-  //     `;
-  //   }
-
-  //   function updateBidSummary() {
-  //     const amount = Number(bidAmount && bidAmount.value ? bidAmount.value : 0);
-  //     const commission = amount * 0.2;
-  //     const payout = amount - commission;
-
-  //     if (commissionAmount) {
-  //       commissionAmount.textContent = `$${commission.toFixed(0)}`;
-  //     }
-
-  //     if (payoutAmount) {
-  //       payoutAmount.textContent = `$${payout.toFixed(0)}`;
-  //     }
-
-  //     const workingRateLabel = document.getElementById('workingRateLabel');
-
-  //     if (workingRateLabel) {
-  //       workingRateLabel.textContent = `$${amount.toFixed(0)}`;
-  //     }
-  //   }
-
-  //   if (bidAmount) {
-  //     bidAmount.addEventListener('input', updateBidSummary);
-  //     updateBidSummary();
-  //   }
-
-  //   if (bidForm) {
-  //     bidForm.addEventListener('submit', function (event) {
-  //       event.preventDefault();
-
-  //       if (statusMessage) {
-  //         statusMessage.textContent = 'Your bid has been prepared for review.';
-  //       }
-  //     });
-  //   }
-
-  //   if (proposalNotes && job.description) {
-  //     proposalNotes.value = `I am interested in this project because ${job.title.toLowerCase()} requires care, clean execution, and consistent communication.`;
-  //   }
-  // }
-
   function renderBidPage(job) {
     const jobTitle = document.getElementById("jobTitle");
     const jobMeta = document.getElementById("jobMeta");
     const jobPrice = document.getElementById("jobPrice");
     const jobPriceType = document.getElementById("jobPriceType");
+    const fixedBudgetLabel = document.getElementById("fixedBudgetLabel");
     const projectRequirements = document.getElementById("projectRequirements");
     const buyerCard = document.getElementById("buyerCard");
     const bidAmount = document.getElementById("bidAmount");
@@ -353,13 +182,19 @@
     const submitButton = document.getElementById("submitBidButton");
     const statusMessage = document.getElementById("bidStatusMessage");
     const bidForm = document.querySelector(".bid_form");
+    const secondaryActionButton = document.querySelector(".secondary_action_button");
 
-    // Populate Job details safely
+    // Populate dynamic job context layout 
     if (jobTitle) jobTitle.textContent = job.title;
-    if (jobMeta)
-      jobMeta.textContent = `Posted ${job.postDate} · ${job.location}`;
+    if (jobMeta) jobMeta.textContent = `Posted ${job.postDate} · ${job.location}`;
     if (jobPrice) jobPrice.textContent = job.price;
     if (jobPriceType) jobPriceType.textContent = job.priceType;
+    if (fixedBudgetLabel) fixedBudgetLabel.textContent = job.price;
+
+    // Dynamically match the "Back to job" button query parameter link targets
+    if (secondaryActionButton && job.id) {
+      secondaryActionButton.setAttribute("href", `/pages/job-description.html?job=${encodeURIComponent(job.id)}`);
+    }
 
     if (projectRequirements) {
       projectRequirements.innerHTML = `
@@ -390,31 +225,27 @@
       `;
     }
 
-    // --- Live Financial Calculations ---
     function updateBidSummary() {
       const amount = Number(bidAmount && bidAmount.value ? bidAmount.value : 0);
       const commission = amount * 0.2;
       const payout = amount - commission;
 
-      if (commissionAmount)
-        commissionAmount.textContent = `$${commission.toFixed(0)}`;
+      if (commissionAmount) commissionAmount.textContent = `$${commission.toFixed(0)}`;
       if (payoutAmount) payoutAmount.textContent = `$${payout.toFixed(0)}`;
 
       const workingRateLabel = document.getElementById("workingRateLabel");
-      if (workingRateLabel)
-        workingRateLabel.textContent = `$${amount.toFixed(0)}`;
+      if (workingRateLabel) workingRateLabel.textContent = `$${amount.toFixed(0)}`;
     }
 
     if (bidAmount) {
       bidAmount.addEventListener("input", updateBidSummary);
-      updateBidSummary();
+      updateBidSummary(); 
     }
 
-    if (proposalNotes && job.description) {
+    if (proposalNotes && job.description && !proposalNotes.value.trim()) {
       proposalNotes.value = `I am interested in this project because ${job.title.toLowerCase()} requires care, clean execution, and consistent communication.`;
     }
 
-    // Helper utility to control status styles smoothly
     function showStatus(msg, isError = false) {
       if (!statusMessage) return;
       statusMessage.textContent = msg;
@@ -431,59 +262,41 @@
       }
     }
 
-    // --- Production Bidding Submission Code ---
     if (bidForm) {
-      // Clear placeholder message text on load safely
-      if (statusMessage) statusMessage.style.display = "none";
+      if (statusMessage) statusMessage.style.display = "none"; 
 
       bidForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        // 1. Resolve Project ID from either custom session variables or query window URLs
-        const projectId =
-          job.id || new URLSearchParams(window.location.search).get("job");
+        const projectId = job.id || new URLSearchParams(window.location.search).get("job");
         if (!projectId) {
-          showStatus(
-            "Error: Cannot establish project identity. Missing project ID.",
-            true,
-          );
+          showStatus("Error: Cannot establish project identity. Missing project ID.", true);
           return;
         }
 
-        // 2. Client Side Validations
-        const numericBidAmount = parseFloat(bidAmount.value);
-        if (isNaN(numericBidAmount) || numericBidAmount <= 0) {
-          showStatus(
-            "Please enter a valid working budget rate greater than $0.",
-            true,
-          );
+        const clientHourlyRate = parseFloat(bidAmount.value); 
+        if (isNaN(clientHourlyRate) || clientHourlyRate <= 0) {
+          showStatus("Please enter a valid working budget rate greater than $0.", true);
           return;
         }
-
+        
+        const freelancerHourlyRate = clientHourlyRate * 0.8; 
         const notesContent = proposalNotes.value.trim();
+
         if (!notesContent) {
-          showStatus(
-            "Please provide some introductory proposal notes for the client.",
-            true,
-          );
+          showStatus("Please provide some introductory proposal notes for the client.", true);
           return;
         }
 
-        // 3. UI Loading Feedback State
         if (submitButton) {
           submitButton.disabled = true;
           submitButton.textContent = "Submitting your bid...";
         }
 
         try {
-          // 4. Retrieve Auth tokens saved during login sequence
-          const token =
-            localStorage.getItem("token") || sessionStorage.getItem("token");
+          const token = localStorage.getItem("token") || sessionStorage.getItem("token");
           if (!token) {
-            showStatus(
-              "Authentication missing. Please sign in to submit proposals.",
-              true,
-            );
+            showStatus("Authentication missing. Please sign in to submit proposals.", true);
             if (submitButton) {
               submitButton.disabled = false;
               submitButton.textContent = "Submit bid now";
@@ -491,36 +304,30 @@
             return;
           }
 
-          // 5. Fire Request matching route: router.post('/bids/:projectId/bids', ...)
-          const response = await fetch(`/api/bids/${projectId}/bids`, {
+          // FIXED Endpoint to absolute backend node server on port 3000
+          const response = await fetch(`https://freelancerhubbackend.onrender.com/api/bids/${projectId}/bids`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-              bidAmount: numericBidAmount,
-              notes: notesContent,
+              proposal_text: notesContent,
+              client_hourly_rate: clientHourlyRate,
+              freelancer_hourly_rate: freelancerHourlyRate
             }),
           });
 
           const responseData = await response.json();
 
           if (!response.ok) {
-            throw new Error(
-              responseData.message || "Server rejected proposal submission.",
-            );
+            throw new Error(responseData.message || "Server rejected proposal submission.");
           }
 
-          // 6. Execution Success Interface Actions
-          showStatus(
-            "Success! Your bid has been submitted successfully.",
-            false,
-          );
+          showStatus("Success! Your bid has been submitted successfully.", false);
           bidForm.reset();
           updateBidSummary();
 
-          // Push down dashboard timeline location parameter automatically after 2 seconds
           setTimeout(() => {
             window.location.href = "/pages/user-dashboard.html";
           }, 2000);
@@ -535,15 +342,68 @@
     }
   }
 
-  const job = resolveJobData(getSelectedJob());
+  // --- Dynamic API Content Fetch Lifecycle ---
+  async function initPage() {
+    setSidebarUser();
 
-  setSidebarUser();
+    const queryJobId = new URLSearchParams(window.location.search).get("job");
+    let targetJobData = { id: queryJobId || "" };
 
-  if (document.body.dataset.page === "job-description") {
-    renderJobDescription(job);
+    if (queryJobId) {
+      try {
+        const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+        
+        // FIXED Endpoint to absolute backend node server on port 3000
+        const response = await fetch(`https://freelancerhubbackend.onrender.com/api/bids/${queryJobId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...(token ? { "Authorization": `Bearer ${token}` } : {})
+          }
+        });
+
+        if (response.ok) {
+          const apiJobData = await response.json();
+          if (apiJobData) {
+            targetJobData = apiJobData;
+          }
+        } else {
+          console.warn(`API returned code ${response.status}. Dropping to session fallback logic.`);
+        }
+      } catch (error) {
+        console.error("Network error while connecting to structural data resource path:", error);
+      }
+    }
+
+    if (!targetJobData.title) {
+      const storedJob = sessionStorage.getItem("selectedJob");
+      if (storedJob) {
+        try {
+          const parsedJob = JSON.parse(storedJob);
+          if (parsedJob && (parsedJob.id === queryJobId || !queryJobId)) {
+            targetJobData = parsedJob;
+          }
+        } catch {
+          // Ignore failure
+        }
+      }
+    }
+
+    if (!targetJobData.title && !targetJobData.id) {
+      targetJobData.id = "website-design-front-end-development";
+      targetJobData.title = "Website Design and Front-End Development";
+    }
+
+    const job = resolveJobData(targetJobData);
+
+    if (document.body.dataset.page === "job-description") {
+      renderJobDescription(job);
+    }
+
+    if (document.body.dataset.page === "submit-bid") {
+      renderBidPage(job);
+    }
   }
 
-  if (document.body.dataset.page === "submit-bid") {
-    renderBidPage(job);
-  }
+  initPage();
 })();
