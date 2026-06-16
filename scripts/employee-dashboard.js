@@ -1,4 +1,3 @@
-
 (async function () {
   "use strict";
 
@@ -30,28 +29,16 @@
   // ==========================================
   function getDisplayName(user) {
     if (!user) return "Sayed Hasan Sami";
-
-    // If local storage payload contains an embedded data wrapper or profile object
     const target = user.user || user.profile || user;
-
     if (typeof target === "string") {
       return target.trim() || "Sayed Hasan Sami";
     }
-
     const firstName = String(target.firstName || target.firstname || "").trim();
     const lastName = String(target.lastName || target.lastname || "").trim();
     const fullName = String(target.name || target.fullName || "").trim();
-
-    if (firstName || lastName) {
-      return `${firstName} ${lastName}`.trim();
-    }
-    if (fullName) {
-      return fullName;
-    }
-    if (target.email) {
-      return String(target.email).split("@")[0];
-    }
-
+    if (firstName || lastName) return `${firstName} ${lastName}`.trim();
+    if (fullName) return fullName;
+    if (target.email) return String(target.email).split("@")[0];
     return "Sayed Hasan Sami";
   }
 
@@ -60,14 +47,10 @@
       .trim()
       .split(/\s+/)
       .filter(Boolean);
-
     if (!parts.length) return "MF";
-
     return parts
       .slice(0, 3)
-      .map(function (part) {
-        return part.charAt(0);
-      })
+      .map((part) => part.charAt(0))
       .join("")
       .toUpperCase();
   }
@@ -83,18 +66,14 @@
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("currentUser");
-
-    // Clear fallbacks and transient project state tracking values
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("currentUser");
     sessionStorage.removeItem("selectedJob");
     sessionStorage.removeItem("isLoggedIn");
-
     window.location.href = "/pages/signin.html";
   }
 
-  // Expose helper API globally onto window object to preserve application cross-compatibility
   window.MFHUserSession = {
     getCurrentUser: function () {
       const storedUser = getUserFromStorage();
@@ -113,15 +92,12 @@
   // ==========================================
   // 3. SECURE AUTH & LIVE CONTENT ORCHESTRATOR
   // ==========================================
-
-  // Instant Security Scan before page layout rendering finishes
   const token = getStoredToken();
   if (!token) {
     window.location.href = "/pages/signin.html";
-    return; // Kill compilation scope thread execution immediately
+    return;
   }
 
-  // Profile retrieval pipeline from Render server infrastructure
   async function fetchUserProfile(authToken) {
     try {
       const response = await fetch(
@@ -134,9 +110,7 @@
           },
         },
       );
-
-      if (!response.ok)
-        throw new Error("Backend rejected authorization token session.");
+      if (!response.ok) throw new Error("Backend rejected authorization token session.");
       return await response.json();
     } catch (err) {
       console.error("Profile synchronization engine failure:", err);
@@ -144,79 +118,71 @@
     }
   }
 
-  async function syncDashboardSession() {
-    // Attempt live payload synchronization, fall back cleanly to local state cache if offline
-    let profileData = await fetchUserProfile(token);
+async function syncDashboardSession() {
+  let profileData = await fetchUserProfile(token);
 
+  if (!profileData) {
+    profileData = getUserFromStorage();
     if (!profileData) {
-      profileData = getUserFromStorage();
-      if (!profileData) {
-        console.warn(
-          "No valid remote session or local fallback data cache payload found. Redirecting to auth.",
-        );
-        handleLogout();
-        return;
-      }
-    } else {
-      // Refresh local cache values dynamically with current fresh server data
-      localStorage.setItem("user", JSON.stringify(profileData));
+      console.warn("No valid remote session or local fallback data cache payload found. Redirecting to auth.");
+      handleLogout();
+      return;
     }
-
-    // Process UI values safely
-    const displayName =
-      `${profileData.first_name || ""} ${profileData.last_name || ""}`.trim() ||
-      getDisplayName(profileData);
-
-    const avatarUrl = profileData.avatar_url;
-
-    const firstName =
-      profileData.firstName ||
-      profileData.firstname ||
-      displayName.split(/\s+/)[0] ||
-      "User";
-
-    // Target elements
-    const sidebarProfileWrapper = document.getElementById("profileMenuToggle");
-    const sidebarAvatar = document.getElementById("sidebarAvatar");
-    const sidebarName = document.getElementById("sidebarName");
-    const topbarProfile = document.getElementById("topbarProfile");
-    const greetingTitle = document.getElementById("greetingTitle");
-
-    // Populate values
-    if (sidebarAvatar) {
-      sidebarAvatar.src =
-        avatarUrl ||
-        "https://res.cloudinary.com/dz6mwsw9d/image/upload/v1778526754/fallback_img.png";
-
-      sidebarAvatar.alt = displayName;
-    }
-    if (sidebarName) sidebarName.textContent = displayName;
-    if (topbarProfile) topbarProfile.textContent = initials;
-    if (greetingTitle)
-      greetingTitle.textContent = `${getGreeting()}, ${firstName} 👋`;
-
-    // Make interfaces visible simultaneously to eliminate page text layout flashing
-    if (sidebarProfileWrapper) sidebarProfileWrapper.style.opacity = "1";
-    if (topbarProfile) topbarProfile.style.opacity = "1";
-    if (greetingTitle) greetingTitle.style.opacity = "1";
+  } else {
+    localStorage.setItem("user", JSON.stringify(profileData));
   }
+
+  const displayName =
+    `${profileData.first_name || ""} ${profileData.last_name || ""}`.trim() ||
+    getDisplayName(profileData);
+
+  const avatarUrl = profileData.avatar_url;
+  const firstName =
+    profileData.firstName ||
+    profileData.firstname ||
+    displayName.split(/\s+/)[0] ||
+    "User";
+
+  // Sidebar avatar
+  const sidebarAvatar = document.getElementById("sidebarAvatar");
+  if (sidebarAvatar) {
+    sidebarAvatar.src =
+      avatarUrl ||
+      "https://res.cloudinary.com/dz6mwsw9d/image/upload/v1778526754/fallback_img.png";
+    sidebarAvatar.alt = displayName;
+  }
+
+  // Sidebar name
+  const sidebarName = document.getElementById("sidebarName");
+  if (sidebarName) sidebarName.textContent = displayName;
+
+  // Topbar profile avatar
+  const topbarProfile = document.getElementById("topbarProfile");
+  if (topbarProfile) {
+    topbarProfile.src =
+      avatarUrl ||
+      "https://res.cloudinary.com/dz6mwsw9d/image/upload/v1778526754/fallback_img.png";
+    topbarProfile.alt = displayName;
+  }
+
+  // Greeting
+  const greetingTitle = document.getElementById("greetingTitle");
+  if (greetingTitle) greetingTitle.textContent = `${getGreeting()}, ${firstName} 👋`;
+}
 
   // ==========================================
   // 4. INTERACTION EVENT LISTENERS
   // ==========================================
   function setupSidebarMenus() {
-    // Project Submenu Accordion Panel Toggle Handler
     const sidebarGroupButton = document.querySelector(".sidebar_group_button");
     if (sidebarGroupButton) {
       const sidebarGroup = sidebarGroupButton.closest(".sidebar_group");
       const sidebarSubmenu = sidebarGroup
         ? sidebarGroup.querySelector(".sidebar_submenu")
         : null;
-
       if (sidebarGroup && sidebarSubmenu) {
         sidebarGroupButton.addEventListener("click", function () {
-          const isExpanded =
-            sidebarGroupButton.getAttribute("aria-expanded") === "true";
+          const isExpanded = sidebarGroupButton.getAttribute("aria-expanded") === "true";
           sidebarGroupButton.setAttribute("aria-expanded", String(!isExpanded));
           sidebarGroup.classList.toggle("is-open", !isExpanded);
           sidebarSubmenu.hidden = isExpanded;
@@ -224,32 +190,35 @@
       }
     }
 
-    // Main Dropdown Profile Widget Controller
     const profileMenuToggle = document.getElementById("profileMenuToggle");
     const profileSubmenu = document.getElementById("profileSubmenu");
     const profileChevron = document.getElementById("profileChevron");
-
     if (profileMenuToggle && profileSubmenu) {
       profileMenuToggle.addEventListener("click", function () {
         const isHidden = profileSubmenu.hidden;
         profileSubmenu.hidden = !isHidden;
-
         if (profileChevron) {
-          profileChevron.style.transform = isHidden
-            ? "rotate(-180deg)"
-            : "rotate(0deg)";
+          profileChevron.style.transform = isHidden ? "rotate(-180deg)" : "rotate(0deg)";
         }
       });
     }
 
-    // Application Logout Controller Action Target
     const logoutButton = document.getElementsByClassName("sidebar_logout");
     if (logoutButton.length > 0) {
       logoutButton[0].addEventListener("click", handleLogout);
     }
+
+    // ✅ Messages button click handler
+    const messagesButton = document.querySelector(
+      '.topbar_icon_button[aria-label="Messages"]'
+    );
+    if (messagesButton) {
+      messagesButton.addEventListener("click", () => {
+        window.location.href = "../pages/massage.html"; // adjust path if needed
+      });
+    }
   }
 
-  // Execute UI assignments cleanly when DOM nodes are available
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       syncDashboardSession();
