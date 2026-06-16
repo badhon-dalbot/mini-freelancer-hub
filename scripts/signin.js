@@ -108,16 +108,16 @@ if (signInForm) {
     }
 
     if (!passwordInput.value.trim()) {
-      errorMessage.textContent = "Please enter your password";
+      showMessage("Please enter your password", "error");
       passwordInput.focus();
       return;
     }
 
-    if (passwordInput.value.length < 6) {
-      showMessage("Password must be at least 6 characters", "error");
-      passwordInput.focus();
-      return;
-    }
+    // if (passwordInput.value.length < 6) {
+    //   showMessage("Password must be at least 6 characters", "error");
+    //   passwordInput.focus();
+    //   return;
+    // }
 
     // Call API handler
     handleSignIn();
